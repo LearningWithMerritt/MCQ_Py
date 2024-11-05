@@ -149,7 +149,8 @@ class QuizView(tk.Frame):
     def __init__(self, parent):
         super().__init__(parent)
 
-        self.score =tk.IntVar(value=25)            # set later
+        self.q_num = tk.IntVar(value=1)
+        self.score =tk.IntVar(value=23)            # set later
         self.num_of_questions = tk.IntVar(value=30) # set later
         self.percent = tk.IntVar(value=round(self.score.get() / self.num_of_questions.get() * 100))
 
@@ -166,11 +167,11 @@ class QuizView(tk.Frame):
 
     def create(self):
         self.frame1 = tk.Frame(self, width=800,height=800, bg=BG_COLOR)
-        
+        self.quiz_name = tk.Label(self.frame1, text="QUIZ NAME", bg=HIGHLIGHT, font=("Courier", QUESTION_FONT_SIZE, "bold"))
 
         self.frame2 = tk.Frame(self.frame1, bg=HIGHLIGHT)
-        self.quiz_name = tk.Label(self.frame2, text="QUIZ NAME", bg=HIGHLIGHT, font=("Courier", QUESTION_FONT_SIZE, "bold"))
         self.score_frame = tk.Frame(self.frame2, bg=HIGHLIGHT)
+        self.q_num_label = tk.Label(self.score_frame, text=f"QUESTION: {self.q_num.get()}", bg=HIGHLIGHT, font=("Courier", QUESTION_FONT_SIZE, "bold"))
         self.score = tk.Label(self.score_frame, text=f"SCORE: {self.score.get()}/{self.num_of_questions.get()}", bg=HIGHLIGHT, font=("Courier", QUESTION_FONT_SIZE, "bold"))
         self.percent_label = tk.Label(self.score_frame,text=f"PERCENT: {self.percent.get()}%", bg=HIGHLIGHT, font=("Courier", QUESTION_FONT_SIZE, "bold"))
 
@@ -191,10 +192,11 @@ class QuizView(tk.Frame):
 
     def layout(self):
         self.frame1.pack(padx=50)
-        self.frame2.pack(fill="x")
+        self.quiz_name.pack(fill="x", expand=1)
 
-        self.quiz_name.pack(side="left", fill="x", expand=1)
+        self.frame2.pack(fill="x")
         self.score_frame.pack(side="left", fill="x", expand=1)
+        self.q_num_label.pack(side="left", fill="x", expand=1)
         self.score.pack(side="left", fill="x",expand=1)
         self.percent_label.pack(side="left", fill="x",expand=1)
 
