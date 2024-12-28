@@ -1,3 +1,15 @@
+#Repo Specific
+txt-app/q_sets_plain/
+
+
+
+
+
+
+
+
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
