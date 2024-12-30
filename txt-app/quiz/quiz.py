@@ -6,7 +6,7 @@ from utils.utils import *
 
 class Quiz():
 
-    def __init__(self,questions:list=[], num_of_questions:int=0):
+    def __init__(self,title:str="QUIZ",questions:list=[], num_of_questions:int=0):
         self.title = title
         self.num_of_questions:int = num_of_questions
         self.score:int = 0

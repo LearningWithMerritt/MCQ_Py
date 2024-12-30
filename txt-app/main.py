@@ -13,7 +13,7 @@ try:
     #     print(MCQ(*q).check_answer())
     #     time.sleep(1)
 
-    Quiz(basic,20).start()
+    Quiz("EXAMPLE",basic,20).start()
         
         
 except KeyboardInterrupt:
