@@ -14,11 +14,14 @@ Decrypt File, Delete, and then display
 
 import time
 import sys
+import importlib
 
 # from quiz.mcq import MCQ
 from quiz.quiz import Quiz
 from utils.utils import *
 from utils.config import * 
+from utils.file_hander import * 
+from utils.crypt import dexor
 
 
 def main():
@@ -30,8 +33,6 @@ def main():
         print(f"{version}")
         sys.exit()
 
-
-
 def main_menu():
     prompt = (
         f"Welcome to {version}\n\n"
@@ -39,71 +40,28 @@ def main_menu():
     )
 
     options = {
+        # "Continue Last Quiz" : continue_last,
         "Take A Quiz" : take_quiz,
         "Restart A Quiz" : restart_quiz,
         "Display Score Report" : score_report,
     }
 
     create_menu(prompt, options,back=False)
-
-
-    
-
-
-def create_menu(prompt:str, options:dict[str:object], back:bool=True):
-    run = True
-    letters = "Qq"
-    length = len(options)
-    option_list = tuple(options.keys())
-
-    i = 1
-    for option in options.keys():
-        prompt += f"{i}.) {option}\n"
-        i+=1
-
-    prompt += "\n"
-
-    if back:
-        letters += "Bb"
-        prompt += "B.) BACK "
-    
-    prompt += "Q.) QUIT\n"
-
-    while run:
-        clear_screen()
-        user_in = check_input(
-            f"[1-{length}{letters}]" + r"{1}",
-            prompt,
-            f"Please input a valid response (1-{length} OR {letters}.)\n",
-        )
-
-        if user_in == "B":
-            run = False
-            return
-        elif user_in == "Q":
-            run = False
-            raise KeyboardInterrupt
-        else:
-            function = options[option_list[int(user_in)-1]]
-            function()
-            
-
-
+         
 def take_quiz():
     prompt = "Please pick a chapter:\n\n"
 
     options = {}
 
-    for chapter in quiz_modules.keys():
-        section_names = quiz_modules[chapter].keys()
-        sections = {}
-        for name in section_names:
-            section_data = quiz_modules[chapter][name]
-            sections[name] = lambda c=chapter,n=name : get_section(c,n)
+    for chapter in modules.keys():
+        sections = modules[chapter].get_sections()
+        sub_options = {}
+        for name, section in sections.items():
+            sub_options[name] = lambda section=section : load_section(section)
 
-        options[chapter] = lambda sections=sections: create_menu(
+        options[chapter] = lambda sub_options=sub_options: create_menu(
             "Please pick a section:\n\n",
-            sections,
+            sub_options,
         )
 
     create_menu(prompt,options)
@@ -114,9 +72,39 @@ def restart_quiz():
 def score_report():
     pass
 
-def get_section(chapter, name):
-    print(f"{name} : {quiz_modules[chapter][name]['file']}")
-    time.sleep(2)
+def load_section(section):
+    dexor(
+        q_setpath / f"{section.filename}.enc",
+        q_setpath / f"{section.filename}.py",
+        q_setpath / f"{section.filename}.key"
+    )
+
+    module = importlib.import_module(f"quiz.q_sets.{section.filename}")
+
+    try:
+        basic = getattr(module, "basic")
+        advanced = getattr(module, "advanced")
+
+    except AttributeError as e:
+        print("MISSING AN ATTRIBUTE")
+
+    else:
+        delete_fromdir(q_setpath,".py")
+        Quiz(section.name, basic, 20).start()
+
+    finally:
+        delete_fromdir(q_setpath,".py")
+        
+
+
+
+
+        
+
+        
+
+
+    
 
 
 

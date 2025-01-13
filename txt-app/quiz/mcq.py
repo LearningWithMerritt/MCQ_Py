@@ -5,14 +5,25 @@ from utils.utils import *
 
 class MCQ():
 
-    def __init__(self, prompt, answer, *choices):
-        self.prompt: str = prompt
+    def __init__(self, question, answer, *choices):
+        self.question: str = question
         self.answer: str = answer
         self.choices: list[str] = list(choices)
+
+        self.prompt = ""
+
+        self.num_str:str = ""
+
+        self.response:str = None
 
         self.randomize()
         self.choice_map = self.gen_choice_map()
 
+    def __eq__(self, other):
+        if isinstance(other, MCQ):
+            return self.question == other.question
+        return False
+    
     def randomize(self) -> None:
         self.choices.insert(random.randint(0,len(self.choices)), self.answer)
 
@@ -25,18 +36,6 @@ class MCQ():
 
         return choice_map
     
-    def display(self, output = True) -> str:
-        prompt = self.prompt + "\n\n"
-        for key, value in self.choice_map.items():
-            prompt+= (f"{key}: {value}\n")
-
-        prompt += "\nQ: Press Q to quit.\n"
-
-        if output:
-            print(prompt)
-
-        return prompt
-        
     def check_answer(self,response) -> bool:
 
         if(self.choice_map[response] == self.answer):
@@ -45,18 +44,39 @@ class MCQ():
         else:
             print("INCORRECT.")
             return False
-    
-    def choice_input(self) -> str:
+         
+    def make_prompt(self,header,number) -> None:
+        self.prompt = f"{header}{number}.) {self.question}\n\n"
+        
+        separator = "-" * int(len(header)/2)
+
+        self.prompt += separator + "\n"
+
+        for key, value in self.choice_map.items():
+            self.prompt+= (f"{key}: {value}\n")
+
+        self.prompt += separator + "\n"
+
+        self.prompt += "\nQ: Press Q to quit.\n"
+
+
+         
+    def get_choice(self) -> str:
         length = len(self.choices)
         pattern = f"^[a-{chr(length+97)}qA-{chr(length+65)}Q]" + r"{1}$"
 
         user_in = check_input(
             pattern,
-            self.display(False),
+            self.prompt,
             f"Please type only single character from A-{chr(length+65)}",
         )
 
         return user_in
+    
+    def set_number(self,n)-> None:
+        self.num_str = str(n) +".) "
+
+
 
 
     
