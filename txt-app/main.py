@@ -8,10 +8,6 @@ Decrypt File, Delete, and then display
 
 '''
 
-
-
-
-
 import time
 import sys
 import importlib
@@ -86,7 +82,7 @@ def load_section(section):
         advanced = getattr(module, "advanced")
 
     except AttributeError as e:
-        print("MISSING AN ATTRIBUTE")
+        print("MISSING AN ATTRIBUTE", e)
 
     else:
         delete_fromdir(q_setpath,".py")
@@ -95,20 +91,8 @@ def load_section(section):
     finally:
         delete_fromdir(q_setpath,".py")
         
+       
 
+if __name__ == "__main__":
 
-
-
-        
-
-        
-
-
-    
-
-
-
-    
-
-
-main()
+    main()
