@@ -43,12 +43,19 @@ class Quiz():
         clear_screen()
         question = self.get_question()
         header = self.set_header()
-        question.make_prompt(header, self.question_number)
+        footer = "\nR). Restart  Q). Quit\n"
+        question.make_prompt(header, self.question_number, footer)
+
 
         answer = question.get_choice()
-        if(answer.upper() == "Q"):
+        if(answer == "Q"):
             if(get_confirmation()):
                 self.end()
+                self.stop_switch = True
+                return
+        elif(answer == "R"):
+            if(get_confirmation()):
+                self.restart()
                 self.stop_switch = True
                 return
 
@@ -60,6 +67,7 @@ class Quiz():
     
     def start(self) -> None:
         try:
+            self.stop_switch = False
             self.load()
 
             if self.question_number >= self.num_of_questions:
@@ -75,9 +83,11 @@ class Quiz():
 
             while(self.question_number < self.num_of_questions):
                 if self.stop_switch:
-                    break
+                    return
                 self.question_number += 1
                 self.__question_loop()
+                if self.stop_switch:
+                    return
 
             self.end()
         except KeyboardInterrupt as e:
@@ -143,6 +153,9 @@ class Quiz():
             self.used = data["used"]
             self.previous_time = data["elapsed_time"]
 
+            if self.question_number < 0:
+                self.question_number = 0
+
     def get_question(self):
         question = self.questions.pop(random.randint(0,len(self.questions)-1))
 
@@ -160,3 +173,18 @@ class Quiz():
 
     def show_report(self):
         pass
+
+    def restart(self):
+        data = self.save_file.load()
+        if self.title in data.keys():
+            del data[self.title]
+
+        self.username = ""
+        self.question_number = 0
+        self.score = 0
+        self.used = []
+        self.previous_time = 0
+        
+
+        self.save_file.write(data)
+        self.start()

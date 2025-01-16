@@ -1,4 +1,4 @@
 #!/bin/bash
 
-python3 text-app/main.py
+python3 txt-app/main.py
 

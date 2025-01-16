@@ -12,8 +12,6 @@ class MCQ():
 
         self.prompt = ""
 
-        self.num_str:str = ""
-
         self.response:str = None
 
         self.randomize()
@@ -45,7 +43,7 @@ class MCQ():
             print("INCORRECT.")
             return False
          
-    def make_prompt(self,header,number) -> None:
+    def make_prompt(self,header,number,footer) -> None:
         self.prompt = f"{header}{number}.) {self.question}\n\n"
         
         separator = "-" * int(len(header)/2)
@@ -57,13 +55,13 @@ class MCQ():
 
         self.prompt += separator + "\n"
 
-        self.prompt += "\nQ: Press Q to quit.\n"
+        self.prompt += footer
 
 
          
     def get_choice(self) -> str:
         length = len(self.choices)
-        pattern = f"^[a-{chr(length+97)}qA-{chr(length+65)}Q]" + r"{1}$"
+        pattern = f"^[a-{chr(length+97)}qrA-{chr(length+65)}QR]" + r"{1}$"
 
         user_in = check_input(
             pattern,
