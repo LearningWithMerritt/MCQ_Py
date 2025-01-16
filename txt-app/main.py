@@ -38,7 +38,6 @@ def main_menu():
     options = {
         # "Continue Last Quiz" : continue_last,
         "Take A Quiz" : take_quiz,
-        "Restart A Quiz" : restart_quiz,
         "Display Score Report" : score_report,
     }
 
@@ -62,11 +61,6 @@ def take_quiz():
 
     create_menu(prompt,options)
 
-def restart_quiz():
-    pass
-
-def score_report():
-    pass
 
 def load_section(section):
     dexor(
@@ -91,7 +85,20 @@ def load_section(section):
     finally:
         delete_fromdir(q_setpath,".py")
         
-       
+def score_report():
+    '''TODO:
+    Read from save.json
+    print a Report for all chapters 
+
+    Chapter
+        Section | Name | Passed? | Score | Percent
+        Section | Name | Passed? | Score | Percent
+    
+    Chapter 
+        Section | Name | Passed? | Score | Percent
+        Section | Name | Passed? | Score | Percent
+    '''
+         
 
 if __name__ == "__main__":
 

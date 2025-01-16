@@ -1,6 +1,9 @@
 '''TODO:
-Save the user name with saved work, and dont ask again
-only ask for name when starting a new quiz
+Create a report using data from the save file
+
+Change restart into a loop, instead of a recursion
+
+
 '''
 
 import time
@@ -10,7 +13,7 @@ from pathlib import Path
 
 from quiz.mcq import MCQ
 from utils.utils import * 
-from utils.file_hander import write_json,read_json
+# from utils.file_hander import write_json,read_json
 from utils.json_handler import Save
 
 class Quiz():
@@ -22,6 +25,9 @@ class Quiz():
         self.question_number:int = 0
         self.score:int = 0
         self.percent:float = 0
+
+        self.passing_score = 75
+        self.passed = False
         
         self.start_time:float = 0.0 
         self.end_time:float = 0.0
@@ -125,14 +131,17 @@ class Quiz():
         self.show_report()
 
     def calc_score(self):
-        self.percent:float = round(self.score / self.num_of_questions * 100,0)
+        self.percent:float = round(self.score / self.num_of_questions * 100)
+        if self.percent > self.passing_score:
+            self.passed = True
 
     def save(self):
         data = {
             self.title : {
+                "passed" : self.passed,
                 "username" : self.username,
                 "num_of_questions" : self.num_of_questions,
-                "question_number" : self.question_number-1,
+                "question_number" : self.question_number-1 if self.question_number < self.num_of_questions else self.question_number,
                 "score" : self.score,
                 "used" : self.used,
                 "elapsed_time" : self.elapsed_time,
@@ -153,6 +162,8 @@ class Quiz():
             self.used = data["used"]
             self.previous_time = data["elapsed_time"]
 
+            self.calc_score()
+
             if self.question_number < 0:
                 self.question_number = 0
 
@@ -172,7 +183,22 @@ class Quiz():
         return status_header
 
     def show_report(self):
-        pass
+        if(self.passed):
+            passed = "\u2705 Passed!"
+        else:
+            passed = "\u274C Not Yet Passed"
+        clear_screen()
+        print(f"Name: {self.username} | Quiz: {self.title} | Score: {self.score}/{self.num_of_questions} | Percent: {self.percent} | Passed? : {passed}")
+        input("PRESS ENTER TO CONTINUE")
+
+        user_in = check_input(
+            r"^[YN]$",
+            "Would you like to take the quiz again?(y/n)\n",
+            "Please type a valid input 'y' or 'n'."
+        )
+
+        if user_in == "Y":
+            self.restart()
 
     def restart(self):
         data = self.save_file.load()
