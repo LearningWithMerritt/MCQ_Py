@@ -1,7 +1,8 @@
 #Repo Specific
-txt-app/quiz/q_sets_plain/
-txt-app/quiz/save.json
-txt-app/logs/.log
+app-gui/
+app-cli/quiz/q_sets_plain/
+app-cli/quiz/save.json
+app-cli/logs/.log
 scripts/
 
 

@@ -1,5 +1,6 @@
 import json
 import sys
+import os
 from pathlib import Path
 
 
@@ -9,6 +10,7 @@ class Json_Handler():
     def __init__(self, path):
         self.path = path
         self.folder = path.parent
+        self.create()
 
     def read(self):
         with open(self.path, "r") as file:
@@ -19,6 +21,11 @@ class Json_Handler():
     def write(self,data,indent=4):
         with open(self.path, "w") as file:
             json.dump(data,file,indent=indent)
+
+    def create(self):
+        if not os.path.exists(self.path):
+            print("SAVE FILE NOT FOUND, CREATING SAVE FILE.")
+            self.write({})
 
 
 class Report(Json_Handler):

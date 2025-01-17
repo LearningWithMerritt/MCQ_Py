@@ -143,6 +143,7 @@ class Quiz():
                 "num_of_questions" : self.num_of_questions,
                 "question_number" : self.question_number-1 if self.question_number < self.num_of_questions else self.question_number,
                 "score" : self.score,
+                "percent": self.percent,
                 "used" : self.used,
                 "elapsed_time" : self.elapsed_time,
             }

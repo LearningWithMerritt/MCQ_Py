@@ -2,6 +2,6 @@
 
 @echo off
 
-python txt-app\main.py
+python app-cli\main.py
 
 rem pause

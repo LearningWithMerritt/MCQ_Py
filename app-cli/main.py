@@ -2,8 +2,7 @@
 TODO:
 Check File Integrity, and fix
 
-Menu Choices
-Decrypt File, Delete, and then display
+Encrypt/Decrypt save file when working with it
 
 
 '''
@@ -17,6 +16,7 @@ from quiz.quiz import Quiz
 from utils.utils import *
 from utils.config import * 
 from utils.file_hander import * 
+from utils.json_handler import *
 from utils.crypt import dexor
 
 
@@ -26,7 +26,7 @@ def main():
 
     except KeyboardInterrupt as e :
         clear_screen()
-        print(f"{version}")
+        print(f"GOODBYE! : {version}\n\n")
         sys.exit()
 
 def main_menu():
@@ -98,6 +98,32 @@ def score_report():
         Section | Name | Passed? | Score | Percent
         Section | Name | Passed? | Score | Percent
     '''
+
+    report = Json_Handler(Path(__file__).parent/"quiz"/"save.json")
+
+    save_data = report.read()
+
+
+
+    if save_data:
+        clear_screen()
+        print(f"{version} SCORE REPORT:\n" + "-"*50)
+        for section, s in save_data.items():
+            if(s["passed"]):
+                passed = "\u2705 Passed!"
+            else:
+                passed = "\u274C Not Yet Passed"
+            print(f'{section} | {s["username"] } | {passed} | SCORE: {s["score"]}/{s["num_of_questions"]} | PRECENT: {s["percent"]}%')
+
+
+        print("\n" + "-"*50 + f"\n{version} SCORE REPORT: (Scroll Up for full report.)")
+        input("\nPRESS ENTER TO CONTINUE")
+
+
+    else:
+        clear_screen()
+        print("No current save data. Please complete a quiz.")
+        input("PRESS ENTER TO CONTINUE")
          
 
 if __name__ == "__main__":
