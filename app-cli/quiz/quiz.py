@@ -18,32 +18,78 @@ from utils.json_handler import Save
 
 class Quiz():
 
-    def __init__(self,title:str="QUIZ",questions:list=[], num_of_questions:int=0):
-        self.username = ""
+    def __init__(self,title:str="QUIZ",questions:list=[], num_of_questions:int=0,passing_score=75):
+
         self.title = title
         self.num_of_questions:int = num_of_questions
+        self.passing_score = passing_score
+        self.save_file = Save(Path(__file__).parent / "save.json")
+        self.questions:list = []
+        self.used: list = []
+        self.directions = (
+            "Answer the following multiple choice questions to best of your ability."
+            f"The number of questions on this quiz is: {self.num_of_questions}\n"
+        )
+        
+        self.username = ""
         self.question_number:int = 0
         self.score:int = 0
         self.percent:float = 0
-
-        self.passing_score = 75
         self.passed = False
         
+        self.previous_time:float = 0.0
         self.start_time:float = 0.0 
         self.end_time:float = 0.0
         self.elapsed_time:float = 0.0 
-        self.previous_time:float = 0.0
+        
         self.stop_switch:bool = False
 
-        self.save_file = Save(Path(__file__).parent / "save.json")
-
-        self.questions:list = []
-        self.used: list = []
         self.load_questions(questions)
 
     def load_questions(self, questions: list) -> None:
         for q in questions:
             self.questions.append(MCQ(*q))
+
+    def start(self) -> None:
+        while(not self.stop_switch):
+            self.load_save()
+
+            if self.question_number >= self.num_of_questions:
+                self.show_report()
+                return
+
+            if not self.username:
+                self.set_username()
+            
+            clear_screen()
+        # try:
+        #     self.stop_switch = False
+        #     self.load()
+
+        #     if self.question_number >= self.num_of_questions:
+        #         self.show_report()
+        #         return
+
+        #     if not self.username:
+        #         self.set_username()
+        #     clear_screen()
+        #     print(self.directions)
+        #     input("Press ENTER to continue...\n")
+
+        #     self.start_time = time.time()
+
+        #     while(self.question_number < self.num_of_questions):
+        #         if self.stop_switch:
+        #             return
+        #         self.question_number += 1
+        #         self.__question_loop()
+        #         if self.stop_switch:
+        #             return
+
+        #     self.end()
+        # except KeyboardInterrupt as e:
+        #     self.end()
+        #     raise KeyboardInterrupt
 
     def __question_loop(self):
         clear_screen()
@@ -70,40 +116,8 @@ class Quiz():
 
         self.used.append(question.question)
         time.sleep(1)
-    
-    def start(self) -> None:
-        try:
-            self.stop_switch = False
-            self.load()
 
-            if self.question_number >= self.num_of_questions:
-                self.show_report()
-                return
 
-            if not self.username:
-                self.set_username()
-            clear_screen()
-            self.directions()
-
-            self.start_time = time.time()
-
-            while(self.question_number < self.num_of_questions):
-                if self.stop_switch:
-                    return
-                self.question_number += 1
-                self.__question_loop()
-                if self.stop_switch:
-                    return
-
-            self.end()
-        except KeyboardInterrupt as e:
-            self.end()
-            raise KeyboardInterrupt
-
-    def directions(self):
-        print("Answer the following multiple choice questions to best of your ability.")
-        print(f"The number of questions on this quiz is: {self.num_of_questions}\n")
-        input("Press ENTER to continue...\n")
 
     def set_username(self):
         clear_screen()

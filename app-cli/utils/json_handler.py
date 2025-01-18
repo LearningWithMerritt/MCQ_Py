@@ -4,11 +4,15 @@ import os
 from pathlib import Path
 
 
+from utils.crypt import enxor,dexor
+
+
 
 class Json_Handler():
 
     def __init__(self, path):
         self.path = path
+        self.parent = path.parent
         self.folder = path.parent
         self.create()
 
@@ -70,6 +74,7 @@ class Save(Json_Handler):
     def save(self, data):
 
         try:
+            self.decrypt()
             save_data = self.read()
         except FileNotFoundError as e:
             self.write({})
@@ -96,6 +101,20 @@ class Save(Json_Handler):
 
         return save_data  
 
+    def decrypt(self):
+        try:
+            dexor(self.parent/self.path.stem, self.path, self.parent/(self.path.stem + ".key"))
+        except FileNotFoundError as e:
+            print(e)
+
+    def encrypt(self):
+        try:
+            keypath = self.parent/(self.path.stem + ".key")
+            enxor(self.path, self.parent/self.path.stem,keypath)
+            self.path.unlink()
+
+        except FileNotFoundError as e:
+            print(e)
              
 
 

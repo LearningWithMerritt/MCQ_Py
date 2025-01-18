@@ -9,13 +9,13 @@ class MCQ():
         self.question: str = question
         self.answer: str = answer
         self.choices: list[str] = list(choices)
+        
 
         self.prompt = ""
-
         self.response:str = None
 
         self.randomize()
-        self.choice_map = self.gen_choice_map()
+        self.choice_map = self.map_choices()
 
     def __eq__(self, other):
         if isinstance(other, MCQ):
@@ -23,9 +23,10 @@ class MCQ():
         return False
     
     def randomize(self) -> None:
-        self.choices.insert(random.randint(0,len(self.choices)), self.answer)
+        self.choices.append(self.answer)
+        self.choices.shuffle()
 
-    def gen_choice_map(self)-> dict[str:str]:
+    def map_choices(self)-> dict[str:str]:
         
         choice_map: dict[str:str] = {}
         
@@ -43,6 +44,21 @@ class MCQ():
             print("INCORRECT.")
             return False
          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     def make_prompt(self,header,number,footer) -> None:
         self.prompt = f"{header}{number}.) {self.question}\n\n"
         
@@ -88,23 +104,4 @@ class MCQ():
 
 
 
-if __name__ == "__main__":
-    question = MCQ(
-    '''
-What is the result of the following code block?
 
-    x = 1
-    y = 2
-
-    if x == y:
-        print("A")
-    else:
-        print("B")
-    ''',
-    "B",
-    "A",
-    "X",
-    "y"
-    )
-    
-    print(question.check_answer())

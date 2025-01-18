@@ -99,7 +99,7 @@ def score_report():
         Section | Name | Passed? | Score | Percent
     '''
 
-    report = Json_Handler(Path(__file__).parent/"quiz"/"save.json")
+    report = Save(Path(__file__).parent/"quiz"/"save.json")
 
     save_data = report.read()
 
@@ -128,4 +128,11 @@ def score_report():
 
 if __name__ == "__main__":
 
-    main()
+    # main()
+    report = Save(Path(__file__).parent/"quiz"/"save.json")
+
+    report.encrypt()
+    input()
+    report.decrypt()
+    input()
+    report.path.unlink()
