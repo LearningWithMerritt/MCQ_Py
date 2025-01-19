@@ -1,11 +1,22 @@
 from pathlib import Path
 
-from utils.section import Chapter,Section
+if __name__ != "__main__":
+    from utils.section import Chapter,Section
+
+else:
+    from section import Chapter, Section
+
+
+
 
 version = "MCQ_Py v1.0.0 pre-Alpha"
 
 ROOT = Path(__file__).parent.parent
 q_setpath = ROOT / "quiz" / "q_sets"
+
+        
+modules = {}
+
 
 ch1 = Chapter("1 Comments Data Variables Operators")
 ch1.add_section("1.1 Comments Input Output and Errors",11)
@@ -17,18 +28,26 @@ ch1.add_section("1.6 Basic Function Calls", 16)
 ch1.add_section("1.7 Strings",17)
 ch1.add_section("builtins",18)
 ch1.add_section("keywords",19)
+modules[ch1.name]=ch1
 
 ch2 = Chapter("2 Collections")
 ch2.add_section("2.1 Lists" ,21)
 ch2.add_section("2.2 Tuples" ,22)
 ch2.add_section("2.3 Sets" ,23)
 ch2.add_section("2.4 Dictionaries",24)
+modules[ch2.name]=ch2
+
+# ch3 = Chapter("3 Conditionals")
 
 
-modules = {
-    ch1.name : ch1,
-    ch2.name : ch2
-}
+
+'''Testing'''
+if __name__ == "__main__":
+
+    for chapter, ch in modules.items():
+        print(chapter)
+        for section, sec in ch.sections.items():
+            print("   * ", section)
 
 
 

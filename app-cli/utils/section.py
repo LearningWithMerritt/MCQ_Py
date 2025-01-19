@@ -1,10 +1,10 @@
-
 class Chapter():
+
     def __init__(self,name):
         self.name = name
         self.sections = {}
 
-    
+
     def __str__(self):
         return self.name
 
@@ -13,11 +13,10 @@ class Chapter():
 
 
     def add_section(self,name,filename):
-        self.sections[name] = Section(self.name,name,filename)
+        self.sections[name] = Section(self,name,filename)
 
-    def get_sections(self):
-        return self.sections
-
+    def get_section(self, section):
+        return self.sections[sections]
 
 
 
@@ -29,7 +28,4 @@ class Section():
 
     def __str__(self):
         return self.name
-
-    def get_filename(self):
-        return self.filename
 
