@@ -71,7 +71,10 @@ class Menu():
             else:
                 print("PLEASE SELECT A VALID OPTION.\n")
                 input("press [ENTER] to continue...")
- 
+
+    def stop(self):
+        self.switch = False
+
     def confirm(self):
         affirm = ["YES","Y"]
         user_in = input(f"Are you sure? (y/n)\n{self.cli_prompt}").strip().upper()
@@ -92,38 +95,21 @@ class Menu():
     def exit(self):
         print("GOODBYE!.")
         sys.exit()
-
+    
+    def in_options(self, pick) -> bool:
+        return pick in self.all_options.keys()
+    
     def set_seperator(self,char,length,maxlen):
         if(length < maxlen):
             self.sep = char * length
         else:
             self.sep = char * maxlen
         
-    def control(self, user_in):
-        keys = self.flow_options.keys()
-        if user_in in keys:
-            pick = self.flow_options[user_in]
-
-            if 2 < len(pick):
-                confirm = pick[2]
-
-                if(not confirm()):
-                    return None
-
-            function = pick[1]
-            function()
-
-    def in_options(self, pick) -> bool:
-        return pick in self.all_options.keys()
-
     def set_flow(self,options):
         for choice in options.keys():
             self.flow_options[choice] = options[choice]
 
             self.all_options = self.options | self.flow_options
-
-    def stop(self):
-        self.switch = False
 
 class Menu_Option:
 

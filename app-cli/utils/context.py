@@ -7,8 +7,6 @@ else:
     from section import Chapter, Section
 
 
-
-
 version = "MCQ_Py v1.0.0 pre-Alpha"
 
 ROOT = Path(__file__).parent.parent

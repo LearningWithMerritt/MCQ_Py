@@ -1,231 +1,78 @@
-'''TODO:
-Create a report using data from the save file
-
-Change restart into a loop, instead of a recursion
-
-
-'''
-
-import time
-import random
-import os
-from pathlib import Path
-
+from utils.utils import *
 from quiz.mcq import MCQ
-from utils.utils import * 
-# from utils.file_hander import write_json,read_json
-from utils.json_handler import Save
 
-class Quiz():
 
-    def __init__(self,title:str="QUIZ",questions:list=[], num_of_questions:int=0,passing_score=75):
+class Quiz:
 
+    def __init__(self,
+        title:str,
+        questions:list=[],
+        totalquestions:int=0,
+        pass_score:int=75
+    ):
         self.title = title
-        self.num_of_questions:int = num_of_questions
-        self.passing_score = passing_score
-        self.save_file = Save(Path(__file__).parent / "save.json")
-        self.questions:list = []
-        self.used: list = []
+        self.totalquestions:int=totalquestions
+        self.pass_score:int = pass_score
+        self.savefile = None #Save Object
+        self.questions:list = self.load_questions(questions)
+        self.used:list = []
         self.directions = (
-            "Answer the following multiple choice questions to best of your ability."
-            f"The number of questions on this quiz is: {self.num_of_questions}\n"
+            "Answer the following questions to the best of your ability.\n"
+            f"Quiz Info:[Total Questions : {self.totalquestions}][ Minimum Passing Score : {self.pass_score/100*self.totalquestions}/{self.totalquestions}]"
         )
-        
-        self.username = ""
-        self.question_number:int = 0
+
+        self.username:str = None
+        self.number:int = 0
         self.score:int = 0
-        self.percent:float = 0
-        self.passed = False
-        
-        self.previous_time:float = 0.0
-        self.start_time:float = 0.0 
-        self.end_time:float = 0.0
-        self.elapsed_time:float = 0.0 
-        
-        self.stop_switch:bool = False
+        self.percent:int = 0.0
+        self.passing:int = False
 
-        self.load_questions(questions)
+        self.lastdelta:float=0.0
+        self.t0:float = 0.0
+        self.tf:float = 0.0
+        self.tdelta:float = 0.0
 
-    def load_questions(self, questions: list) -> None:
+        self.switch:bool = False
+    
+    def load_questions(self, questions:list) -> None:
         for q in questions:
             self.questions.append(MCQ(*q))
 
-    def start(self) -> None:
-        while(not self.stop_switch):
-            self.load_save()
+    def begin(self) -> None:
+        pass
 
-            if self.question_number >= self.num_of_questions:
-                self.show_report()
-                return
-
-            if not self.username:
-                self.set_username()
-            
-            clear_screen()
-        # try:
-        #     self.stop_switch = False
-        #     self.load()
-
-        #     if self.question_number >= self.num_of_questions:
-        #         self.show_report()
-        #         return
-
-        #     if not self.username:
-        #         self.set_username()
-        #     clear_screen()
-        #     print(self.directions)
-        #     input("Press ENTER to continue...\n")
-
-        #     self.start_time = time.time()
-
-        #     while(self.question_number < self.num_of_questions):
-        #         if self.stop_switch:
-        #             return
-        #         self.question_number += 1
-        #         self.__question_loop()
-        #         if self.stop_switch:
-        #             return
-
-        #     self.end()
-        # except KeyboardInterrupt as e:
-        #     self.end()
-        #     raise KeyboardInterrupt
-
-    def __question_loop(self):
-        clear_screen()
-        question = self.get_question()
-        header = self.set_header()
-        footer = "\nR). Restart  Q). Quit\n"
-        question.make_prompt(header, self.question_number, footer)
-
-
-        answer = question.get_choice()
-        if(answer == "Q"):
-            if(get_confirmation()):
-                self.end()
-                self.stop_switch = True
-                return
-        elif(answer == "R"):
-            if(get_confirmation()):
-                self.restart()
-                self.stop_switch = True
-                return
-
-        elif(question.check_answer(answer)):
-            self.score +=1
-
-        self.used.append(question.question)
-        time.sleep(1)
-
-
-
-    def set_username(self):
-        clear_screen()
-        name = check_input(
+    def set_uname(self):
+        self.username = validate_in(
             r"[A-Z]+\s[A-Z]+",
-            "Please type your FIRST and LAST name below.\n",
-            "Make sure you enter your FIRST and LAST name with a single space in between."
+            "Enter your FIRST and LAST name with a single space in between",
+            "names may only contain letters (A-Z) with a space to seperate FIRST and LAST."
         )
-        while(len(name) > 20):
-            clear_screen()
-            print("The name you entered is to long, please limit your name to 20 characters or less.")
-            name = check_input(
-            r"[A-Z]+\s[A-Z]+",
-            "Please type your FIRST and LAST name below.\n",
-            "Make sure you enter your FIRST and LAST name with a single space in between."
-        )
-        
-        self.username = name
+
+        if(30 < len(self.username)):
+            self.username = self.username[:30]
+            print("\nProvided name exceeds max length and has been truncated.")
+            wait(2)
 
     def end(self) -> None:
-        self.end_time = time.time()
-        self.elapsed_time = self.previous_time + self.end_time - self.start_time
+        self.tf = time.time()
+        self.tdelta = self.lastdelta + self.tf - self.t0
         self.calc_score()
         self.save()
-        self.show_report()
-
-    def calc_score(self):
-        self.percent:float = round(self.score / self.num_of_questions * 100)
-        if self.percent > self.passing_score:
-            self.passed = True
-
-    def save(self):
-        data = {
-            self.title : {
-                "passed" : self.passed,
-                "username" : self.username,
-                "num_of_questions" : self.num_of_questions,
-                "question_number" : self.question_number-1 if self.question_number < self.num_of_questions else self.question_number,
-                "score" : self.score,
-                "percent": self.percent,
-                "used" : self.used,
-                "elapsed_time" : self.elapsed_time,
-            }
-        }
-
-        self.save_file.save(data)
-
-    def load(self):
-        data = self.save_file.load()
-            
-        if self.title in data.keys():
-            data = data[self.title]
-            self.username = data["username"]
-            self.num_of_questions = data["num_of_questions"]
-            self.question_number = data["question_number"]
-            self.score = data["score"]
-            self.used = data["used"]
-            self.previous_time = data["elapsed_time"]
-
-            self.calc_score()
-
-            if self.question_number < 0:
-                self.question_number = 0
-
-    def get_question(self):
-        question = self.questions.pop(random.randint(0,len(self.questions)-1))
-
-        while(question.question in self.used):
-            question = self.questions.pop(random.randint(0,len(self.questions)-1))
+        self.report()
         
-        return question
+    def calc_score(self) -> None:
+        self.percent = round(self.score /self.totalquestions * 100)
+        if self.percent > self.pass_score:
+            self.passing = True
 
-    def set_header(self):
-        status_header = f"NAME: {self.username}  SCORE: {self.score}/{self.num_of_questions}\n"
-        sep = "-" * len(status_header) + "\n"
-        status_header += sep
+    def save(self) -> None:
+        pass
+    
+    def load(self) -> None:
+        pass
 
-        return status_header
+    def report(self) -> None:
+        pass
 
-    def show_report(self):
-        if(self.passed):
-            passed = "\u2705 Passed!"
-        else:
-            passed = "\u274C Not Yet Passed"
-        clear_screen()
-        print(f"Name: {self.username} | Quiz: {self.title} | Score: {self.score}/{self.num_of_questions} | Percent: {self.percent} | Passed? : {passed}")
-        input("PRESS ENTER TO CONTINUE")
-
-        user_in = check_input(
-            r"^[YN]$",
-            "Would you like to take the quiz again?(y/n)\n",
-            "Please type a valid input 'y' or 'n'."
-        )
-
-        if user_in == "Y":
-            self.restart()
-
-    def restart(self):
-        data = self.save_file.load()
-        if self.title in data.keys():
-            del data[self.title]
-
-        self.username = ""
-        self.question_number = 0
-        self.score = 0
-        self.used = []
-        self.previous_time = 0
-        
-
-        self.save_file.write(data)
-        self.start()
+    def restart(self) -> None:
+        pass
