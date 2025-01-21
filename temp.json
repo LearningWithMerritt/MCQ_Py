@@ -1,0 +1,10 @@
+{
+    "What will be the output of the following Python code snippet?\\n\\nclass Example():\\n    def __init__(self):\\n        self.name = \"name\"\\n\\n    def method(self):\\n        print(self.name)\\n": [
+        "HelloWorld",
+        "Hello World",
+        "Hello + World",
+        "Error",
+        "None of these"
+    ]
+    
+}
