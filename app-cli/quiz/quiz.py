@@ -1,4 +1,8 @@
+import random
+
 from utils.utils import *
+from utils.ui import * 
+from utils.file_hander import * 
 from quiz.mcq import MCQ
 
 
@@ -6,15 +10,16 @@ class Quiz:
 
     def __init__(self,
         title:str,
-        questions:list=[],
+        question_data:dict[str:list],
         totalquestions:int=0,
         pass_score:int=75
     ):
         self.title = title
         self.totalquestions:int=totalquestions
         self.pass_score:int = pass_score
-        self.savefile = None #Save Object
-        self.questions:list = self.load_questions(questions)
+        self.savefile = Save(Path(__file__).parent/"save.json")
+        self.question_data: dict[str:list] = question_data
+        self.questions:list = []
         self.used:list = []
         self.directions = (
             "Answer the following questions to the best of your ability.\n"
@@ -32,14 +37,46 @@ class Quiz:
         self.tf:float = 0.0
         self.tdelta:float = 0.0
 
-        self.switch:bool = False
+        self.switch:bool = True
+
+
     
-    def load_questions(self, questions:list) -> None:
-        for q in questions:
-            self.questions.append(MCQ(*q))
+    def load_questions(self) -> None:
+        for question, options in self.question_data.items():
+            self.questions.append(MCQ(question,*options))
 
     def begin(self) -> None:
-        pass
+        
+        while(self.number <= self.totalquestions and self.switch):
+            if(len(self.questions) < 1):
+                self.load_questions()
+
+            self.calc_percent()
+
+            question = self.questions.pop(random.randint(0,len(self.questions)-1))
+
+            if(self.number < 1):
+                self.number = 1
+
+            menu = Menu(
+                cli_prompt = "$>",
+                header = f"[Quiz: {self.title}][Name: {self.username}][Score: {self.score}/{self.totalquestions}][Percent: {self.percent}%]",
+                prompt = f"{self.number}). {question.question}",
+                options = question.options
+            )
+
+            menu.set_flow({
+                "R" : Menu_Option("Restart", self.restart,True)
+            })
+
+            menu.run()
+            print(f"Your Answer: {menu.output.text}")
+            
+            if question.check_answer(menu.output.text):
+                self.score += 1
+
+            wait(2)
+            self.number += 1
 
     def set_uname(self):
         self.username = validate_in(
@@ -61,9 +98,12 @@ class Quiz:
         self.report()
         
     def calc_score(self) -> None:
-        self.percent = round(self.score /self.totalquestions * 100)
+        self.calc_percent()
         if self.percent > self.pass_score:
             self.passing = True
+
+    def calc_percent(self) -> None:
+        self.percent = round(self.score /self.totalquestions * 100)
 
     def save(self) -> None:
         pass
@@ -75,4 +115,5 @@ class Quiz:
         pass
 
     def restart(self) -> None:
-        pass
+        print("RESTARTING")
+        input()

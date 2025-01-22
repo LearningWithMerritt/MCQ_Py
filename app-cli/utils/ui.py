@@ -60,6 +60,8 @@ class Menu():
                         self.output = pick
                         if(pick.do is not None):
                             pick.do()
+                        else:
+                            return
 
 
                 elif(self.confirm()):
@@ -67,6 +69,8 @@ class Menu():
                         self.output = pick
                         if(pick.do is not None):
                             pick.do()
+                        else:
+                            return
   
             else:
                 print("PLEASE SELECT A VALID OPTION.\n")
@@ -125,9 +129,6 @@ if __name__ == "__main__":
     def load_section(section):
         print(section)
         input()
-
-
-
 
 
     sec_menu = Menu(

@@ -5,6 +5,8 @@ app-cli/quiz/save.json
 app-cli/logs/.log
 scripts/
 
+tools/qset-to-json/json-files/
+
 
 
 

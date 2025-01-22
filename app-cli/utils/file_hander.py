@@ -4,6 +4,8 @@ from pathlib import Path
 from datetime import datetime
 
 
+
+
 class JSON_Handler():
     
     def __init__(self, path):
@@ -32,6 +34,8 @@ class JSON_Handler():
 class Save(JSON_Handler):
     def __init__(self, path):
         super().__init__(path)
+        self.noextension = self.parent / self.path.stem
+        self.xor = Xor(path,self.noextension, str(self.noextension) + ".key")
 
 
     def read(self):
@@ -41,9 +45,12 @@ class Save(JSON_Handler):
             delete plain file
             return data
         '''
-        pass
-
-    def write(self):
+        self.xor.dexor()    
+        jsondata = super().read()
+        self.path.unlink()
+        return jsondata
+        
+    def write(self,data):
         '''TODO:
             decrypt file
             read data
@@ -52,12 +59,25 @@ class Save(JSON_Handler):
             encrypt file
             delete plain
         '''
-        pass
+        self.xor.dexor()
+        jsondata = super().read()
+
+        for key,val in data.items():
+            jsondata[key] = val
+        
+        super().write(jsondata)
+
+        self.xor.enxor()
+        self.path.unlink()
+        
+        
 
 class Xor():
-    def __init__(self, path):
-        self.path = path
-        self.parent = path.parent
+    def __init__(self, plainpath, cipherpath, keypath):
+        self.parent = plainpath.parent
+        self.plainpath = plainpath
+        self.cipherpath = cipherpath
+        self.keypath = keypath
         
     def gen_key(self, length):
         return os.urandom(length)
@@ -65,27 +85,27 @@ class Xor():
     def xor(self, data, key):
         return bytes(a ^ b for a,b in zip(data,key))
 
-    def enxor(self, inpath, outpath, keypath):
-        with open(inpath,"rb") as file:
+    def enxor(self):
+        with open(self.plainpath,"rb") as file:
             data = file.read()
 
         key = self.gen_key(len(data))
-        with open(keypath, "wb") as file:
+        with open(self.keypath, "wb") as file:
             file.write(key)
 
         cipher_data = self.xor(data,key)
-        with open(outpath, "wb") as file:
+        with open(self.cipherpath, "wb") as file:
             file.write(cipher_data)
 
-    def dexor(self, inpath, outpath, keypath):
-        with open(inpath,"rb") as file:
+    def dexor(self):
+        with open(self.cipherpath,"rb") as file:
             data = file.read()
 
-        with open(keypath, "rb") as file:
+        with open(self.keypath, "rb") as file:
             key = file.read()
 
         plain = self.xor(data,key)
-        with open(outpath, "wb") as file:
+        with open(self.plainpath, "wb") as file:
             file.write(plain)
 
 

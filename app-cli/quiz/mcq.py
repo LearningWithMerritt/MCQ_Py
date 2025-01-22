@@ -2,6 +2,7 @@ import random
 
 
 from utils.utils import *
+from utils.ui import Menu_Option
 
 class MCQ():
 
@@ -15,6 +16,7 @@ class MCQ():
         self.response:str = None
 
         self.randomize()
+        self.options = self.map_choices()
 
     def __eq__(self, other):
         if isinstance(other, MCQ):
@@ -23,7 +25,7 @@ class MCQ():
     
     def randomize(self) -> None:
         self.choices.append(self.answer)
-        self.choices.shuffle()
+        random.shuffle(self.choices)
 
     def check_answer(self,response) -> bool:
 
@@ -34,16 +36,14 @@ class MCQ():
             print("[INCORRECT.]")
             return False
          
-
-
-    # def map_choices(self)-> dict[str:str]:
+    def map_choices(self)-> dict[str:str]:
         
-    #     choice_map: dict[str:str] = {}
+        choice_map: dict[str:str] = {}
         
-    #     for i, e in enumerate(self.choices):
-    #         choice_map[chr(i+65)] = e
+        for i, e in enumerate(self.choices):
+            choice_map[chr(i+65)] = Menu_Option(e)
 
-    #     return choice_map
+        return choice_map
 
 
 

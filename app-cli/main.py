@@ -141,6 +141,13 @@ Encryption
          
 
 if __name__ == "__main__":
-    from quiz.quiz import Quiz
-    quiz = Quiz("DEFAULT")
-    quiz.set_uname()
+    from pathlib import Path
+    from utils.file_hander import Save
+    from quiz.quiz import *
+    
+    path = Save(Path(__file__).parent / "quiz" / "q_sets" / "test.json")
+    questions = path.read()
+
+    quiz = Quiz("Test Quiz", questions, 10)
+    quiz.begin()
+    
