@@ -20,6 +20,25 @@ json
 
 Encryption
 '''
+from utils.context import *
+from utils.utils import *
+from utils.ui import *
+from quiz.quiz import Quiz
+
+def main():
+    try:
+        ...
+
+    except KeyboardInterrupt as e:
+        print()
+
+
+
+
+
+
+
+
 
 # import time
 # import sys

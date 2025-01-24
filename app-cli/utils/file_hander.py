@@ -37,28 +37,17 @@ class Save(JSON_Handler):
         self.noextension = self.parent / self.path.stem
         self.xor = Xor(path,self.noextension, str(self.noextension) + ".key")
 
+    def create(self):
+        if not os.path.exists(self.path):
+            super().write({})
 
     def read(self):
-        '''TODO:
-            decrypt file
-            read data
-            delete plain file
-            return data
-        '''
         self.xor.dexor()    
         jsondata = super().read()
         self.path.unlink()
         return jsondata
         
     def write(self,data):
-        '''TODO:
-            decrypt file
-            read data
-            write data
-            write file
-            encrypt file
-            delete plain
-        '''
         self.xor.dexor()
         jsondata = super().read()
 

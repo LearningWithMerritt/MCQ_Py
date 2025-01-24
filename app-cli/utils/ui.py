@@ -31,50 +31,54 @@ class Menu():
         self.switch = True
 
     def run(self):
-        self.switch = True
-        while(self.switch):
-            self.clear()
-            if(self.header):
-                print(self.header)
-                print(self.sep)
+        try:
+            self.switch = True
+            while(self.switch):
+                self.clear()
+                if(self.header):
+                    print(self.header)
+                    print(self.sep)
 
-            print(self.prompt,"\n")
-            if(0 < len(self.sep)):
-                print(self.sep)
+                print(self.prompt,"\n")
+                if(0 < len(self.sep)):
+                    print(self.sep)
 
-            for key, option in self.options.items():
-                print(f"[{key}]. {option.text}")
-            print()
+                for key, option in self.options.items():
+                    print(f"[{key}]. {option.text}")
+                print()
 
-            for key,option in reversed(self.flow_options.items()):
-                print(f"[{key}]: {option.text}",end="  ")
-            print()
+                for key,option in reversed(self.flow_options.items()):
+                    print(f"[{key}]: {option.text}",end="  ")
+                print()
 
-            user_in = input(self.cli_prompt).strip().upper()
-
-
-            if(self.in_options(user_in)):
-                pick = self.all_options[user_in]
-                if(not pick.confirm):
-                    if(self.switch):
-                        self.output = pick
-                        if(pick.do is not None):
-                            pick.do()
-                        else:
-                            return
+                user_in = input(self.cli_prompt).strip().upper()
 
 
-                elif(self.confirm()):
-                    if(self.switch):
-                        self.output = pick
-                        if(pick.do is not None):
-                            pick.do()
-                        else:
-                            return
-  
-            else:
-                print("PLEASE SELECT A VALID OPTION.\n")
-                input("press [ENTER] to continue...")
+                if(self.in_options(user_in)):
+                    pick = self.all_options[user_in]
+                    if(not pick.confirm):
+                        if(self.switch):
+                            self.output = pick
+                            if(pick.do is not None):
+                                pick.do()
+                            else:
+                                return
+
+
+                    elif(self.confirm()):
+                        if(self.switch):
+                            self.output = pick
+                            if(pick.do is not None):
+                                pick.do()
+                            else:
+                                return
+    
+                else:
+                    print("PLEASE SELECT A VALID OPTION.\n")
+                    input("press [ENTER] to continue...")
+        except KeyboardInterrupt as e:
+            print("GOODBYE...\n")
+            sys.exit()
 
     def stop(self):
         self.switch = False
@@ -97,7 +101,8 @@ class Menu():
         input("press [ENTER] to continue...")
 
     def exit(self):
-        print("GOODBYE!.")
+        self.clear()
+        print("GOODBYE!...\n")
         sys.exit()
     
     def in_options(self, pick) -> bool:

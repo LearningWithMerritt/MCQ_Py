@@ -3,7 +3,7 @@ import re
 import time
 
 
-def wait(seconds):
+def wait(seconds=None):
     if(seconds):
         time.sleep(seconds)
     else:

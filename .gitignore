@@ -2,6 +2,8 @@
 app-gui/
 app-cli/quiz/q_sets_plain/
 app-cli/quiz/save.json
+app-cli/quiz/save
+app-cli/quiz/save.key
 app-cli/logs/.log
 scripts/
 
