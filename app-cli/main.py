@@ -20,19 +20,62 @@ json
 
 Encryption
 '''
+import sys
+
 from utils.context import *
 from utils.utils import *
 from utils.ui import *
 from quiz.quiz import Quiz
 
 def main():
-    try:
-        ...
+    try: 
+        chmenu = Menu(
+            prompt = f"Pick a Chapter:"
+        )
+        chmenu.set_flow({
+            "B" : Menu_Option("Back", chmenu.stop)
+        })
+
+        chnum = 1
+        for chapter, ch in modules.items():
+            secmenu = Menu(
+                prompt = f"{chapter}\nPick a section:"
+            )
+            secmenu.set_flow({
+                "B" : Menu_Option("Back", secmenu.stop)
+            })
+
+            
+            secnum = 1
+
+            secmenu.add_option("1",Menu_Option("TEST"))
+
+
+        menu = Menu(
+            prompt = f"Welcome to {version}\n\nWhat would you like to do?",
+            options = {
+                "1": Menu_Option("Take a Quiz",chmenu.run),
+                "2" : Menu_Option("Display Score Report", score_report)
+            }
+        )
+
+        menu.run()
+               
 
     except KeyboardInterrupt as e:
-        print()
+        print(f"Goodbye... {version}")
+        sys.exit()
 
 
+
+def load_quiz(section):
+    print(f"LOADING QUIZ {section}")
+    input()
+
+def score_report():
+    pass
+
+main()
 
 
 
@@ -159,14 +202,14 @@ def main():
 #         input("PRESS ENTER TO CONTINUE")
          
 
-if __name__ == "__main__":
-    from pathlib import Path
-    from utils.file_hander import Save
-    from quiz.quiz import *
+# if __name__ == "__main__":
+#     from pathlib import Path
+#     from utils.file_hander import Save
+#     from quiz.quiz import *
     
-    path = Save(Path(__file__).parent / "quiz" / "q_sets" / "test.json")
-    questions = path.read()
+#     path = Save(Path(__file__).parent / "quiz" / "q_sets" / "test.json")
+#     questions = path.read()
 
-    quiz = Quiz("Test Quiz", questions, 10)
-    quiz.begin()
+#     quiz = Quiz("Test Quiz", questions, 10)
+#     quiz.begin()
     

@@ -12,7 +12,7 @@ class Menu():
         sepmaxlen=75,
         prompt="",
         options={},
-        cli_prompt = "|MCQ_Py|> "
+        cli_prompt = "|MCQ_Py|> " 
     ):
         self.header = header
         self.prompt = prompt
@@ -119,6 +119,13 @@ class Menu():
             self.flow_options[choice] = options[choice]
 
             self.all_options = self.options | self.flow_options
+
+    def add_option(self, key, val):
+        self.options[key] = val
+
+
+
+
 
 class Menu_Option:
 

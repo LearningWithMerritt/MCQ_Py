@@ -44,7 +44,7 @@ class Quiz:
         for question, options in self.question_data.items():
             self.questions.append(MCQ(question,*options))
 
-    def begin(self) -> None:
+    def run(self) -> None:
         try:
             self.load()
             if(self.number >= self.totalquestions):
