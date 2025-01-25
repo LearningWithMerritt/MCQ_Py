@@ -7,7 +7,7 @@ else:
     from section import Chapter, Section
 
 
-version = "MCQ_Py v1.0.0 pre-Alpha"
+version = "MCQ_Py v1.0.0 Alpha"
 
 ROOT = Path(__file__).parent.parent
 q_setpath = ROOT / "quiz" / "q_sets"

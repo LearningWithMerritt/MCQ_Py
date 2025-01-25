@@ -22,6 +22,7 @@ class Quiz:
         self.question_data: dict[str:list] = question_data
         self.questions:list = []
         self.used:list = []
+        self.menu = None
         self.directions = (
             "Answer the following questions to the best of your ability.\n"
             f"Quiz Info:[Total Questions : {self.totalquestions}][ Minimum Passing Score : {self.pass_score/100*self.totalquestions}/{self.totalquestions}]"
@@ -49,7 +50,7 @@ class Quiz:
             self.load()
             if(self.number >= self.totalquestions):
                 self.report()
-                return
+                
             
             self.switch = True
             while(self.number <= self.totalquestions and self.switch):
@@ -67,29 +68,30 @@ class Quiz:
                 if(self.number < 1):
                     self.number = 1
 
-                menu = Menu(
-                    cli_prompt = "$>",
+                self.menu = Menu(
                     header = f"|Quiz: {self.title} | Name: {self.username} | Score: {self.score}/{self.totalquestions} | Percent: {self.percent}% |",
                     prompt = f"{self.number}). {question.question}",
                     options = question.options
                 )
 
-                menu.set_flow({
-                    "R" : Menu_Option("Restart",lambda m=menu :  self.restart(m),True),
-                    "Q" : Menu_Option("Quit",lambda m=menu : self.quit(m), True)
+                self.menu.set_flow({
+                    "R" : Menu_Option("Restart",lambda m=self.menu :  self.restart(),True),
+                    "Q" : Menu_Option("Quit",lambda m=self.menu : self.quit(), True)
                 })
 
-                menu.run()
+                self.menu.run()
               
-                if(menu.output.text in ["Restart", "Quit"] ):
+                if(self.menu.output.text == "Restart"):
                     continue
+                elif(self.menu.output.text == "Quit"):
+                    return
 
-                print(f"Your Answer: {menu.output.text}")
+                print(f"Your Answer: {self.menu.output.text}")
                 
-                if question.check_answer(menu.output.text):
+                if question.check_answer(self.menu.output.text):
                     self.score += 1
 
-                wait(2)
+                wait(1)
                 self.number += 1
             
             self.end()
@@ -140,6 +142,7 @@ class Quiz:
                 "username" : self.username,
                 "number": self.number,
                 "totalquestions":self.totalquestions,
+                "score" : self.score,
                 "percent": self.percent,
                 "passing" : self.passing,
                 "pass_score" : self.pass_score,
@@ -164,6 +167,7 @@ class Quiz:
             self.username = state["username"]
             self.number = state["number"]
             self.totalquestions = state["totalquestions"]
+            self.score = state["score"]
             self.percent = state["percent"]
             self.passing = state["passing"]
             self.pass_score = state["pass_score"]
@@ -186,10 +190,14 @@ class Quiz:
 
             if userin in ["y","yes"]:
                 self.restart()
+                self.run()
+            else:
+                self.switch = False
+
         except KeyboardInterrupt as e:
             sys.exit()
 
-    def restart(self, menu) -> None:
+    def restart(self) -> None:
         self.questions = []
 
         self.username:str = None
@@ -203,8 +211,13 @@ class Quiz:
         self.tf:float = 0.0
         self.tdelta:float = 0.0
 
-        menu.stop()
+        self.save()
 
-    def quit(self, menu)-> None:
+        if(self.menu):
+            self.menu.stop()
+
+    def quit(self)-> None:
         self.end()
-        menu.stop()
+
+        if(self.menu):
+            self.menu.stop()

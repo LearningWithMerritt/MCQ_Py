@@ -11,13 +11,16 @@ class Menu():
         sep="=",
         sepmaxlen=75,
         prompt="",
-        options={},
-        cli_prompt = "|MCQ_Py|> " 
+        options=None,
+        cli_prompt = "$> " 
     ):
         self.header = header
         self.prompt = prompt
         self.set_seperator(sep,len(header), sepmaxlen)
-        self.options = options
+        if options is None:
+            self.options = {}
+        else:
+            self.options = options
         
         self.flow_options = {
             "Q": Menu_Option("Quit", self.exit, True),
@@ -123,6 +126,8 @@ class Menu():
     def add_option(self, key, val):
         self.options[key] = val
 
+        self.all_options = self.options | self.flow_options
+
 
 
 
@@ -136,47 +141,47 @@ class Menu_Option:
 
 
 
-if __name__ == "__main__":
+# if __name__ == "__main__":
 
-    def load_section(section):
-        print(section)
-        input()
-
-
-    sec_menu = Menu(
-        prompt = "Pick a section:",
-        options = {
-            "1" : Menu_Option("Section 1",lambda s="Section 1": load_section(s),True)
-        }
-    )
-    sec_menu.set_flow({
-        "B" : Menu_Option("Back", sec_menu.stop),
-    })
-
-    ch_menu = Menu(
-        prompt = "Pick a chapter.",
-        options = {
-            "1" : Menu_Option("Chapter 1",sec_menu.run),
-            "2" : Menu_Option("Chapter 2"),
-            "3" : Menu_Option("Chapter 3")
-        }
-    )
-    ch_menu.set_flow({
-        "B" : Menu_Option("Back", ch_menu.stop),
-    })
+#     def load_section(section):
+#         print(section)
+#         input()
 
 
-    main_menu = Menu(
-        prompt = "What would you like to do?",
-        options = {
-            "1" : Menu_Option("Take A Quiz", ch_menu.run),
+#     sec_menu = Menu(
+#         prompt = "Pick a section:",
+#         options = {
+#             "1" : Menu_Option("Section 1",lambda s="Section 1": load_section(s),True)
+#         }
+#     )
+#     sec_menu.set_flow({
+#         "B" : Menu_Option("Back", sec_menu.stop),
+#     })
 
-        },
-    )
+#     ch_menu = Menu(
+#         prompt = "Pick a chapter.",
+#         options = {
+#             "1" : Menu_Option("Chapter 1",sec_menu.run),
+#             "2" : Menu_Option("Chapter 2"),
+#             "3" : Menu_Option("Chapter 3")
+#         }
+#     )
+#     ch_menu.set_flow({
+#         "B" : Menu_Option("Back", ch_menu.stop),
+#     })
 
 
-    main_menu.run()
-    print(sec_menu.output.text)
+#     main_menu = Menu(
+#         prompt = "What would you like to do?",
+#         options = {
+#             "1" : Menu_Option("Take A Quiz", ch_menu.run),
+
+#         },
+#     )
+
+
+#     main_menu.run()
+#     print(sec_menu.output.text)
  
 
 

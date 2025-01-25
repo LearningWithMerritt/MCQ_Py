@@ -24,6 +24,7 @@ import sys
 
 from utils.context import *
 from utils.utils import *
+from utils.file_hander import *
 from utils.ui import *
 from quiz.quiz import Quiz
 
@@ -45,17 +46,23 @@ def main():
                 "B" : Menu_Option("Back", secmenu.stop)
             })
 
-            
             secnum = 1
+            for section in ch.sections.keys():
+                secmenu.add_option(str(secnum), Menu_Option(section, lambda c=ch,s=section : load_quiz(c.get_section(s))))
+                secnum+=1
 
-            secmenu.add_option("1",Menu_Option("TEST"))
+            chmenu.add_option(str(chnum), Menu_Option(chapter, secmenu.run))
+            chnum +=1
 
 
+
+  
         menu = Menu(
             prompt = f"Welcome to {version}\n\nWhat would you like to do?",
             options = {
                 "1": Menu_Option("Take a Quiz",chmenu.run),
-                "2" : Menu_Option("Display Score Report", score_report)
+                "2" : Menu_Option("Display Score Report", score_report),
+                "3" : Menu_Option("TESTING", lambda : load_quiz())
             }
         )
 
@@ -68,15 +75,29 @@ def main():
 
 
 
-def load_quiz(section):
-    print(f"LOADING QUIZ {section}")
-    input()
+def load_quiz(section=None):
+    if section:
+        path = q_setpath / section.filename
+        qset = Save(path)
+        data = qset.read()
+
+        Quiz(section.name,data,30).run()
+    else:
+        path = q_setpath / "test.json"
+        qset = Save(path)
+        data = qset.read()
+
+        Quiz("TESTING",data,10).run()
+
 
 def score_report():
     pass
 
-main()
+if __name__ == "__main__":
+    main()
 
+    # save = Save(Path(__file__).parent / "quiz" / "save.json")
+    # save.xor.dexor()
 
 
 
