@@ -10,7 +10,7 @@ else:
 version = "MCQ_Py v1.0.0 Alpha"
 
 ROOT = Path(__file__).parent.parent
-q_setpath = ROOT / "quiz" / "q_sets"
+q_setpath = ROOT / "quiz" / "sets"
 
         
 modules = {}
@@ -35,97 +35,25 @@ ch2.add_section("2.3 Sets" ,23)
 ch2.add_section("2.4 Dictionaries",24)
 modules[ch2.name]=ch2
 
-# ch3 = Chapter("3 Conditionals")
+ch3 = Chapter("3 Conditionals")
+ch3.add_section("3.1 Boolean Expressions",31)
+ch3.add_section("3.2 Conditionals",32)
+modules[ch3.name]=ch3
 
+ch4 = Chapter("4 Iteration")
+ch4.add_section("4.1 While Loops",41)
+ch4.add_section("4.2 For Loops",42)
+ch4.add_section("4.3 Iterate 1D Collections",43)
+ch4.add_section("4.4 Iterate 2D Collections",44)
+ch4.add_section("4.5 Iterators",45)
+ch4.add_section("4.6 Generators",46)
+modules[ch4.name]=ch4
 
+ch5 = Chapter("5 Functions")
+ch5.add_section("5.1 Functions",51)
+ch5.add_section("5.2 Recursion",52)
+ch5.add_section("5.3 Decorators",53)
+modules[ch5.name]=ch5
 
-'''Testing'''
-if __name__ == "__main__":
-
-    for chapter, ch in modules.items():
-        print(chapter)
-        for section, sec in ch.sections.items():
-            print("   * ", section)
-
-
-
-
-
-# quiz_modules = {
-#     "1 Comments Data Variables Operators" : 
-    # {
-    #     "1.1 Comments Input Output and Errors" : {"file" : "q_set11"},
-    #     "1.2 Syntax" : {"file" : "q_set11" },
-    #     "1.3 Data" : {"file" : "q_set11" },
-    #     "1.4 Variables" : {"file" : "q_set11" },
-    #     "1.5 Operators" : {"file" : "q_set11" },
-    #     "1.6 Basic Function Calls" : {"file" : "q_set11" },
-    #     "1.7 Strings" : {"file" : "q_set11" },
-    #     "builtins" : {"file" : "q_set11" },
-    #     "keywords" : {"file" : "q_set11" }
-    # },
-    # "2 Collections" : {
-    #     "2.1 Lists" : {},
-    #     "2.2 Tuples" : {},
-    #     "2.3 Sets" : {},
-    #     "2.4 Dictionaries" : {}
-    # },
-#     "3 Conditionals" : [
-#         "3.1 Boolean Expressions",
-#         "3.2 Conditionals"
-#     ],
-#     "4 Iteration" : [
-#         "4.1 While Loops",
-#         "4.2 For Loops",
-#         "4.3 Iterate 1D Collections",
-#         "4.4 Iterate 2D Collections",
-#         "4.5 Iterators",
-#         "4.6 Generators"
-#     ],
-#     "5 Functions" : [
-#         "5.1 Functions",
-#         "5.2 Recursion",
-#         "5.3 Decorators"
-#     ],
-#     "6 Objects and Classes" : [
-#         "6.1 Classes",
-#         "6.2 Objects",
-#         "6.3 Methods",
-#         "6.4 Inheritance",
-#         "6.5 Modules"
-#     ],
-#     "7 Advanced" : {
-#         "Character Encoding" : [],
-#         "Data Structures" : [],
-#         "Exception Handling" : [],
-#         "File Handling" : [],
-#         "Importing Code" : [],
-#         "Project Structure" : [],
-#         "Regular Expressions" : [],
-#     },
-#     "8 Algorithms" : {
-#         "Searching" : [],
-#         "Sorting" : []
-#     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# }
 
 

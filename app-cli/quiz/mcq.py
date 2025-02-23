@@ -30,10 +30,10 @@ class MCQ():
     def check_answer(self,response) -> bool:
 
         if(self.answer == response):
-            print("[CORRECT!]")
+            print("[\u2705 CORRECT! \u2705]")
             return True
         else:
-            print("[INCORRECT.]")
+            print("[\u274C INCORRECT. \u274C]")
             return False
          
     def map_choices(self)-> dict[str:str]:

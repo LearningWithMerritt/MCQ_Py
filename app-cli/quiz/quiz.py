@@ -182,8 +182,13 @@ class Quiz:
     def report(self) -> None:
         try:
             clear_screen()
+            if self.passing:
+                graphic = '\u2705'
+            else:
+                graphic = "\u274C"
+
     
-            print(f"{self.title}| PASSING?: {self.passing} | NAME: {self.username} | SCORE: {self.score}/{self.totalquestions} | PERCENT: {self.percent} |")
+            print(f"{self.title}| PASSING?: {graphic} | NAME: {self.username} | SCORE: {self.score}/{self.totalquestions} | PERCENT: {self.percent} |")
 
             print("Would you like to restart? (y/n)")
             userin = input().strip().lower()
