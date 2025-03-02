@@ -50,6 +50,7 @@ class Quiz:
             self.load()
             if(self.number >= self.totalquestions):
                 self.report()
+                return
                 
             
             self.switch = True
