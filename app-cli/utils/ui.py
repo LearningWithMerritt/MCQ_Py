@@ -1,5 +1,7 @@
 import os,sys
 import time
+import shutil
+
 
 
 class Menu():
@@ -8,15 +10,16 @@ class Menu():
     def __init__(self,
         pattern = None,
         header="",
-        sep="=",
-        sepmaxlen=75,
+        sepchar="=",
+        sepmaxlen=1000,
         prompt="",
         options=None,
         cli_prompt = "$> " 
     ):
         self.header = header
         self.prompt = prompt
-        self.set_seperator(sep,len(header), sepmaxlen)
+        self.sepmaxlen = sepmaxlen
+        self.sepchar = sepchar
         if options is None:
             self.options = {}
         else:
@@ -38,13 +41,14 @@ class Menu():
             self.switch = True
             while(self.switch):
                 self.clear()
+                self.set_seperator(self.sepchar,len(self.header))
                 if(self.header):
                     print(self.header)
-                    print(self.sep)
+                    print(self.sep +"\n")
 
                 print(self.prompt,"\n")
                 if(0 < len(self.sep)):
-                    print(self.sep)
+                    print(self.sep +"\n")
 
                 for key, option in self.options.items():
                     print(f"[{key}]. {option.text}")
@@ -111,9 +115,16 @@ class Menu():
     def in_options(self, pick) -> bool:
         return pick in self.all_options.keys()
     
-    def set_seperator(self,char,length,maxlen):
+    def set_seperator(self,char,length,maxlen=None):
+        if maxlen is None:
+            maxlen = self.sepmaxlen
+
         if(length < maxlen):
-            self.sep = char * length
+            width = shutil.get_terminal_size().columns
+            if(length < width):
+                self.sep = char * length
+            else:
+                self.sep = char * width
         else:
             self.sep = char * maxlen
         
@@ -141,48 +152,6 @@ class Menu_Option:
 
 
 
-# if __name__ == "__main__":
-
-#     def load_section(section):
-#         print(section)
-#         input()
-
-
-#     sec_menu = Menu(
-#         prompt = "Pick a section:",
-#         options = {
-#             "1" : Menu_Option("Section 1",lambda s="Section 1": load_section(s),True)
-#         }
-#     )
-#     sec_menu.set_flow({
-#         "B" : Menu_Option("Back", sec_menu.stop),
-#     })
-
-#     ch_menu = Menu(
-#         prompt = "Pick a chapter.",
-#         options = {
-#             "1" : Menu_Option("Chapter 1",sec_menu.run),
-#             "2" : Menu_Option("Chapter 2"),
-#             "3" : Menu_Option("Chapter 3")
-#         }
-#     )
-#     ch_menu.set_flow({
-#         "B" : Menu_Option("Back", ch_menu.stop),
-#     })
-
-
-#     main_menu = Menu(
-#         prompt = "What would you like to do?",
-#         options = {
-#             "1" : Menu_Option("Take A Quiz", ch_menu.run),
-
-#         },
-#     )
-
-
-#     main_menu.run()
-#     print(sec_menu.output.text)
- 
 
 
 
