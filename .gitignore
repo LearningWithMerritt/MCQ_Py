@@ -1,3 +1,24 @@
+#Repo Specific
+app-gui/
+app-cli/quiz/plain_sets/
+app-cli/quiz/save.json
+app-cli/quiz/save
+app-cli/quiz/save.key
+app-cli/logs/.log
+scripts/
+
+tools/set-to-json/
+
+
+
+
+
+
+
+
+
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
