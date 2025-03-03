@@ -5,9 +5,9 @@ app-cli/quiz/save.json
 app-cli/quiz/save
 app-cli/quiz/save.key
 app-cli/logs/.log
-scripts/
+# scripts/
 
-tools/set-to-json/
+tools/set-to-json/json-files
 
 
 
