@@ -1,5 +1,4 @@
 #Repo Specific
-<<<<<<< HEAD
 app-gui/
 app-cli/quiz/plain_sets/
 app-cli/quiz/save.json
@@ -10,12 +9,6 @@ scripts/
 
 tools/set-to-json/
 
-=======
-app-cli/quiz/q_sets_plain/
-app-cli/quiz/save
-app-cli/quiz/save.key
-app-cli/quiz/save.json
->>>>>>> fb72253 (update)
 
 
 
