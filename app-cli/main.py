@@ -61,8 +61,8 @@ def main():
             prompt = f"Welcome to {version}\n\nWhat would you like to do?",
             options = {
                 "1": Menu_Option("Take a Quiz",chmenu.run),
-                "2" : Menu_Option("Display Score Report", score_report),
-                "3" : Menu_Option("TESTING", lambda : load_quiz())
+                # "2" : Menu_Option("Display Score Report", score_report),
+                # "3" : Menu_Option("TESTING", lambda : load_quiz())
             }
         )
 
