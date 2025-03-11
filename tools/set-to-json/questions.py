@@ -1,640 +1,689 @@
 '''Place preformmated questions and answers in the dictionary "questions" below.'''
 
-setname = "set11"
+setname = "set12"
 
 
 questions = {}
 
-'''An Introduction to the Python Programming Language!'''
+'''General Syntax'''
 s1 = {
-    "Who created the Python programming language?": [
-        "Guido van Rossum", 
-        "Dennis Ritchie", 
-        "Bjarne Stroustrup", 
-        "James Gosling"
-    ],
+"Which of the following best defines 'syntax'?": [
+    "Rules for writing a language",
+    "A type of programming language",
+    "A debugging technique",
+    "A compiler feature"
+],
+"How is source code executed in Python?": [
+    "Top to bottom, left to right, line by line",
+    "Bottom to top, right to left",
+    "Randomly based on function calls",
+    "Only after compilation"
+],
+"What is required in Python syntax to define blocks of code?": [
+    "Indentation",
+    "Braces `{}`",
+    "Semicolons `;`",
+    "Parentheses `()`"
+],
+"What happens when indentation is incorrect in Python?": [
+    "It results in an error",
+    "It is ignored",
+    "It is automatically fixed",
+    "It only affects performance"
+],
+"Which symbol is primarily used for indentation in Python?": [
+    "Spaces or tabs",
+    "Semicolons `;`",
+    "Brackets `[]`",
+    "Curly braces `{}`"
+],
+"What type of error is caused by incorrect indentation in Python?": [
+    "IndentationError",
+    "SyntaxError",
+    "RuntimeError",
+    "LogicError"
+],
+'''Review the code snippet below, which print statement will be executed first?
 
-    "In which year was Python first released?": [
-        "1991", 
-        "1994", 
-        "2000", 
-        "2008"
-    ],
+print("a"); print("b")
+print("c")
 
-    "Which of the following is NOT a feature introduced in Python 2.0?": [
-        "Improved Unicode support", 
-        "List comprehensions", 
-        "Garbage collection", 
-        "Many usability improvements"
-    ],
+print("d")
+''':[
+    "a",
+    "b",
+    "c",
+    "d"  
+]
 
-    "Which Python version introduced the print function with parentheses as mandatory syntax?": [
-        "Python 3.0", 
-        "Python 1.0", 
-        "Python 2.0", 
-        "Python 3.9"
-    ],
-
-    "When did official support for Python 2 end?": [
-        "January 1, 2020", 
-        "December 3, 2008", 
-        "October 16, 2000", 
-        "March 15, 2021"
-    ],
-
-    "Which of the following programming paradigms is NOT supported by Python?": [
-        "Assembly programming", 
-        "Procedural programming", 
-        "Object-oriented programming", 
-        "Functional programming"
-    ],
-
-    "What is the file extension for Python scripts?": [
-        ".py", 
-        ".pyt", 
-        ".python", 
-        ".exe"
-    ],
-
-    "What command is used to invoke the Python interpreter on Windows?": [
-        "python", 
-        "python3", 
-        "py", 
-        "py3"
-    ],
-
-    "What command is used to run a Python script named `script.py` on a UNIX-like system?": [
-        "python3 script.py", 
-        "python script.py", 
-        "run script.py", 
-        "exec script.py"
-    ],
-
-    "Which of the following statements about Python's syntax is TRUE?": [
-        "Python uses significant whitespace to enhance readability", 
-        "Python requires semicolons at the end of every statement", 
-        "Python uses curly braces `{}` to define blocks of code", 
-        "Python is case insensitive"
-    ]
 }
 
+'''Every Opening Needs a Closing'''
 
-'''Single/Multi-Line Comments'''
-s2 = {
-    "What symbol is used to create a single-line comment in Python?": [
-        "#", 
-        "//", 
-        "--", 
-        "/*"
-    ],
+s2 ={
+"Which of the following symbols in Python must always have a closing counterpart?": [
+    "(), [], {}",
+    "`@`, `#`, `!`",
+    "`?`, `:`",
+    "`%`, `&`"
+],
+"Which of the following is an example of correctly paired symbols in Python?": [
+    "'Hello' or (1, 2, 3)",
+    "'Hello or (1, 2, 3'",
+    "'[1, 2, 3'",
+    "'{key: value'"
+],
+"What will happen if an opening parenthesis `(` is not closed properly?": [
+    "SyntaxError",
+    "The code will run normally",
+    "Python will automatically close it",
+    "It will be ignored"
+],
 
-    "Which of the following is a valid multi-line comment in Python?": [
-        "''' This is a multi-line comment '''", 
-        "// This is a multi-line comment //", 
-        "/* This is a multi-line comment */", 
-        "-- This is a multi-line comment --"
-    ],
+'''The following code snippet results in an error, which of the following correctly identifies the issue?
 
-    "What is another name for a multi-line comment in Python?": [
-        "Docstring", 
-        "Block comment", 
-        "Inline comment", 
-        "Metadata string"
-    ],
+print("Hello World"
+''': [
+    "A missing ')'",
+    "A missing '\"'",
+    "A missing '('",
+    "A missing '}'"
+],
+'''The following code snippet results in an error, which of the following correctly identifies the issue?
 
-    "Which of the following statements about comments in Python is TRUE?": [
-        "Comments are ignored by the interpreter", 
-        "Comments must always be at the beginning of a script", 
-        "Python requires comments for every function", 
-        "Comments are executed like normal code"
-    ],
+numbers = [1, 2, 3, 4{
+''': [
+    "A missing ']'",
+    "A missing '['",
+    "A missing '{'",
+    "A missing '('"
+],
+'''The following code snippet results in an error, which of the following correctly identifies the issue?
 
-    "What is the main purpose of using comments in Python code?": [
-        "To document and explain the code", 
-        "To speed up code execution", 
-        "To add debugging instructions", 
-        "To prevent syntax errors"
-    ],
+data = 'key': 'value' }
+''': [
+    "A missing '{'",
+    "A missing '}')",
+    "A missing '}'",
+    "A missing '['"
+],
+'''The following code snippet results in an error, which of the following correctly identifies the issue?
 
-    "Which shortcut can be used in VS Code to quickly comment or uncomment lines of code?": [
-        "Ctrl + /", 
-        "Alt + C", 
-        "Shift + #", 
-        "Ctrl + Shift + C"
-    ],
+if (x > 0: 
+    print('Positive')
+''': [
+    "A missing ')'",
+    "A missing ':')",
+    "A missing '('",
+    "A missing 'if'"
+],
+'''The following code snippet results in an error, which of the following correctly identifies the issue?
 
-    "Which of the following is NOT a correct way to write a comment in Python?": [
-        "-- This is a comment", 
-        "# This is a comment", 
-        "''' This is a comment '''", 
-        "\"\"\" This is a comment \"\"\""
-    ],
+def my_function(param: 
+    return param * 2
+''': [
+    "A missing ')'",
+    "A missing ':'",
+    "A missing '('",
+    "A missing 'def'"
+],
+'''The following code snippet results in an error, which of the following correctly identifies the issue?
 
-    "How does the Python interpreter treat comments in a script?": [
-        "It ignores them", 
-        "It raises an error", 
-        "It executes them as part of the code", 
-        "It prints them as output"
-    ],
+    if x == 10 :
+print("Ten")
+''': [
+    "IndentationError: unexpected indent",
+    "A missing ':'",
+    "A missing 'if'",
+    "IndentationError: expected an indented block"
+],
+'''The following code snippet results in an error, which of the following correctly identifies the issue?
 
-    "Which of the following is a best practice when writing comments in Python?": [
-        "Write clear and concise comments to improve readability", 
-        "Write comments for every single line of code", 
-        "Use comments to store unused code indefinitely", 
-        "Avoid using comments to keep the code shorter"
-    ],
+print("Hello World"
+''': [
+    "A missing ')'",
+    "A missing '('",
+    "A missing '{'",
+    "A missing '\"'"
+],
+'''The following code snippet results in an error, which of the following correctly identifies the issue?
 
-    "What type of comments are typically used to provide documentation for functions in Python?": [
-        "Docstrings", 
-        "Single-line comments", 
-        "XML comments", 
-        "HTML comments"
-    ]
+numbers = [1, 2, 3, 4)
+''': [
+    "Replace ')' with ']'",
+    "Replace '[' with '('",
+    "Replace ')' with '{'",
+    "Replace '(' with '['"
+],
+'''The following code snippet results in an error, which of the following correctly identifies the issue?
+
+def test_function():
+print('Testing')
+''': [
+    "IndentationError: expected an indented block",
+    "A missing ':'",
+    "A missing 'def'",
+    "A missing '()'"
+],
+'''The following code snippet results in an error, which of the following correctly identifies the issue?
+
+if (x > 0: 
+    print("Positive")
+''': [
+    "A missing ')'",
+    "A missing '('",
+    "A missing ':'",
+    "IndentationError: expected an indented block"
+]
 }
 
-
-'''First Program: Console Output'''
 s3 = {
-"Which function is used to display output in the Python console?": [
-    "print()", 
-    "display()", 
-    "echo()", 
-    "output()"
-],
+'''Is the line 'elif x == 2:' inside or outside the 'if x == 1:' code block?
 
-"What is the correct syntax to print 'Hello, World!' in Python?": [
-    'print("Hello, World!")', 
-    'echo("Hello, World!")', 
-    'display("Hello, World!")', 
-    'print Hello, World!'
-],
-
-"What type of data is 'Hello World' in the statement `print('Hello World')`?": [
-    "String", 
-    "Integer", 
-    "Boolean", 
-    "List"
-],
-
-'''What will be the output of the following Python code?
-
-print(\"Hello\")
-print(\"World\")
-
-''': [
-    "Hello\nWorld", 
-    "Hello World", 
-    "Hello, World!", 
-    "HelloWorld"
-],
-
-"Which of the following statements about the `print()` function is TRUE?": [
-    "It sends output to the standard output (stdout)", 
-    "It can only print numbers", 
-    "It requires a return statement", 
-    "It is not a built-in function"
-],
-
-"What is the purpose of using quotes around 'Hello World' in the `print()` function?": [
-    "To define it as a string", 
-    "To mark it as a comment", 
-    "To execute it as a command", 
-    "To concatenate two values"
-],
-
-"What happens if you run `print(Hello World)` without quotes?": [
-    "It results in a NameError", 
-    "It prints 'Hello World' correctly", 
-    "It prints 'Hello' and 'World' separately", 
-    "It asks for user input"
-],
-
-"Which of the following is a correct way to print multiple items in one statement?": [
-    'print("Hello", "World")', 
-    'print("Hello" + "World")', 
-    'print("Hello" "World")', 
-    'print("Hello". "World")'
-],
-
-'''What will be the output of the following code?
-
-print("Python", "is", "fun", sep="-") 
-
-''': [
-    "Python-is-fun", 
-    "Python is fun", 
-    "Python-is-fun-", 
-    "Pythonisfun"
-],
-
-"What is the default separator between values when multiple arguments are passed to `print()`?": [
-    "A space", 
-    "A comma", 
-    "A newline", 
-    "No separator"
-]
-}
-
-'''First Program: User Input'''
-s4 = {
-'''Which function is used to handle input from the user in Python?''': [
-    "input()", 
-    "read()", 
-    "get_input()", 
-    "scan()"
-],
-
-'''What happens when the input() function is called in a Python program?''': [
-    "The program pauses and waits for user input", 
-    "The program immediately proceeds", 
-    "It raises an error", 
-    "It executes other code in parallel"
-],
-
-'''What will the input() function return?''': [
-    "The text entered by the user", 
-    "An integer", 
-    "A boolean value", 
-    "A float"
-],
-
-'''What does placing a string inside the input() function do?''': [
-    "It displays a prompt message to the user", 
-    "It automatically validates the input", 
-    "It stores the input in a variable", 
-    "It converts the input into an integer"
-],
-
-'''What is the result when the following code is executed?
-
-input("Type your input: ")
-''': [
-    "The program pauses and waits for user input", 
-    "It prints 'Type your input:'", 
-    "It automatically stores input in a variable", 
-    "It throws an error"
-],
-
-'''What will be the output of the following code after user input is given?
-
-print(input("Type your input: "))
-''': [
-    "The user input will be printed to the console", 
-    "The program will stop", 
-    "It will ask for input again", 
-    "It will print the prompt message"
-],
-'''What is the correct way to print the user input after calling input()?''': [
-    "print(input())", 
-    "input(print())", 
-    "output(input())", 
-    "return(print())"
-],
-
-'''What does the term "stdin" refer to in Python?''': [
-    "Standard Input", 
-    "Standard Output", 
-    "Standard Error", 
-    "System Input"
-],
-'''What happens when the input() function is used without any arguments?''': [
-    "The program waits for user input without displaying any prompt", 
-    "It raises an error", 
-    "It automatically fills in a default value", 
-    "It exits the program"
-],
-
-'''Which of the following will correctly prompt a user to enter their age and store the input in a variable?''': [
-    'age = input("Enter your age: ")', 
-    'input = age("Enter your age")', 
-    'input("Enter your age: ") = age', 
-    'input("Enter your age: ").store(age)'
-]
-}
-
-"""Executing a Python Program"""
-s5 = {
-'''What does source code refer to in Python?''': [
-    "The human-readable set of instructions written by the programmer", 
-    "The machine-readable bytecode", 
-    "The executable file generated after compilation", 
-    "The final output of a Python program"
-],
-
-'''Why is Python source code not immediately readable by the computer?''': [
-    "Because it needs to be translated into machine code", 
-    "Because it is stored in a .pyc file", 
-    "Because it is automatically executed without translation", 
-    "Because it contains errors"
-],
-
-'''What is the program used to translate Python source code into a form the computer can understand?''': [
-    "The Python interpreter", 
-    "The Python compiler", 
-    "The Python Virtual Machine", 
-    "The Python debugger"
-],
-
-'''Which program is used to execute Python code on Windows?''': [
-    "python.exe", 
-    "python3", 
-    "python2", 
-    "python-windows"
-],
-
-'''Which program is used to execute Python code on Mac/Linux?''': [
-    "python3", 
-    "python.exe", 
-    "python2", 
-    "python-mac"
-],
-'''What is the file extension used for storing Python source code?''': [
-    ".py", 
-    ".txt", 
-    ".pyc", 
-    ".exe"
-],
-
-'''What does the Python interpreter do with the source code when executed?''': [
-    "Converts it into bytecode", 
-    "Directly executes the source code", 
-    "Translates it into machine code", 
-    "Stores it in the pycache directory"
-],
-
-'''Where is the bytecode stored after the Python interpreter processes the source code?''': [
-    "In a .pyc file inside the pycache directory", 
-    "In a .txt file", 
-    "In the Python source file", 
-    "In the Python Virtual Machine"
-],
-
-'''Which component of the Python execution process translates bytecode into machine code?''': [
-    "Python Virtual Machine (PVM)", 
-    "Python interpreter", 
-    "CPU", 
-    "Python compiler"
-],
-
-'''What happens after the machine code is generated by the Python Virtual Machine?''': [
-    "It is processed by the CPU to generate the output", 
-    "It is stored in a .pyc file", 
-    "It is executed by the Python interpreter", 
-    "It is passed to the Python Virtual Machine"
-],
-'''What is the first step in executing a Python program?''': [
-    "Invoke the interpreter through the command line and provide the filename as an argument", 
-    "Write the program in a text editor", 
-    "Run the Python interpreter without any arguments", 
-    "Save the Python code in a .pyc file"
-],
-
-'''What is the correct syntax for running a Python program on Windows?''': [
-    "python <filename>", 
-    "python3 <filename>", 
-    "py <filename>", 
-    "py3 <filename>"
-],
-
-'''What is the correct syntax for running a Python program on Linux/MacOS?''': [
-    "python3 <filename>", 
-    "python <filename>", 
-    "py <filename>", 
-    "py3 <filename>"
-]
-}
-
-'''Python Installation Path'''
-s6 = {
-'''Where is Python typically installed on Windows?''': [
-    "C:\\Program Files\\Python3xx", 
-    "C:\\Users\\USER\\AppData\\Local\\Programs\\Python\\Python3xx", 
-    "C:\\Python", 
-    "C:\\Windows\\System32\\Python3xx"
-],
-
-'''Where is Python usually installed for a specific user on Windows?''': [
-    "C:\\Users\\USER\\AppData\\Local\\Programs\\Python\\Python3xx", 
-    "C:\\Program Files\\Python3xx", 
-    "C:\\Python\\Python3xx", 
-    "C:\\Windows\\System32\\Python3xx"
-],
-
-'''How can you check the installed Python version on Windows?''': [
-    "> python --version", 
-    "$ python3 --version", 
-    "> python version", 
-    "$ python --version"
- ],
-
-'''What is the default installation path for Python on Linux/MacOS?''': [
-    "/usr/bin/python3", 
-    "/usr/local/bin/python3", 
-    "/bin/python", 
-    "/home/user/python3"
-],
-
-'''How can you check the installed Python version on Linux/MacOS?''': [
-    "python3 --version", 
-    "python --version", 
-    "version python3", 
-    "python3 -v"
-],
-
-'''How can you execute a Python program on Linux/MacOS?''': [
-    "python3 filename.py", 
-    "python filename.py", 
-    "python3 execute filename.py", 
-    "run python3 filename.py"
-]
-
-}
-
-'''You are experiencing an Error!'''
-s7 = {
-'''What type of error occurs when code violates the rules of the programming language's syntax?''': [
-    "Syntax/Compile Time Errors", 
-    "Runtime Errors", 
-    "Logical Errors", 
-    "ID 10 T Errors"
-],
-
-'''What type of error occurs after the program is successfully compiled but fails during execution due to an impossible operation?''': [
-    "Runtime Errors", 
-    "Syntax/Compile Time Errors", 
-    "Logical Errors", 
-    "PEBKAC Errors"
-],
-
-'''Which type of error happens when the program runs but produces incorrect results due to issues with the program's logic?''': [
-    "Logical Errors", 
-    "Syntax/Compile Time Errors", 
-    "Runtime Errors", 
-    "ID 10 T Errors"
-],
-
-'''What does PEBKAC stand for in the context of errors?''': [
-    "Problem Exists Between the Keyboard and Chair", 
-    "Program Execution Between Keyboard and Chair", 
-    "Problematic Error Between Keyboard and Computer", 
-    "Program Error Because of Keyboard and Computer"
-],
-
-'''What is an ID 10 T error caused by?''': [
-    "User mistake", 
-    "System malfunction", 
-    "External factors", 
-    "Syntax violation"
-]
-
-}
-
-'''Syntax/Compile Time Errors'''
-s8 = {
-'''What is the first step in fixing a Syntax/Compile Time Error?''': [
-    "Read the error output", 
-    "Check for runtime errors", 
-    "Rewrite the code from scratch", 
-    "Ask for help from a friend"
-],
-
-'''In the following example, what is the issue with the code?
-
-Traceback (most recent call last):
-  File "<path to your .py file>", line 2, in <module>
-    Print("Hello World")
-    ^^^^^
-NameError: name 'Print' is not defined. Did you mean: 'print'?
-
-''': [
-    "The function name is capitalized incorrectly", 
-    "There is a missing parenthesis", 
-    "The print statement is missing quotes", 
-    "The program has no error"
-],
-
-'''What key information should you look for in error output when trying to fix a Syntax/Compile Time Error?''': [
-    "Line number and specific error info", 
-    "Program version and execution time", 
-    "The number of characters in the code", 
-    "The time it takes to compile the code"
-],
-
-'''What error is shown when there is a typo in a function name, such as using 'Print' instead of 'print'?''': [
-    "NameError", 
-    "SyntaxError", 
-    "TypeError", 
-    "RuntimeError"
-],
-
-'''In the example, what is the suggested fix for the error "NameError: name 'Print' is not defined. Did you mean: 'print'?"''': [
-    "Use 'print' instead of 'Print'", 
-    "Use a different function", 
-    "Add an extra parenthesis", 
-    "Remove the quotes"
-]
-}
-
-'''Runtime Errors'''
-s9 = {
-'''What is a Runtime Error in Python?''': [
-    "An error that occurs during execution due to an invalid operation", 
-    "An error that occurs when there is a syntax mistake", 
-    "An error caused by missing libraries", 
-    "An error that prevents code from being compiled"
-],
-
-'''
-What is the cause of the error in the following code?
-
-print(5 / 0)
-
-
-Traceback (most recent call last):
-  File "<path to your .py file>", line 1, in <module>
-    print(5 / 0)
-           ~~^~~
-ZeroDivisionError: division by zero
-
+if x == 1:
+    print("x is 1")
+elif x == 2:
+    print("x is 2")
 ''' : [
-    "The program attempted to divide by zero", 
-    "The program attempted an invalid operation", 
-    "There is a syntax error", 
-    "There is an unexpected input"
+    "Outside",
+    "Inside",
+    "Unclear",
+    "Not part of any block"
 ],
 
-'''In the following code, what is the issue?
+'''Is the line 'else:' inside or outside the 'if x == 1:' code block?
 
-my_list = ["a","b","c"]
-print(my_list[3])
-
-
-Traceback (most recent call last):
-  File "<path to your .py file>", line 4, in <module>
-    print(my_list[3])
-          ~~~~~~~^^^
-IndexError: list index out of range
-
-''': [
-    "The list index is out of range", 
-    "The list is empty", 
-    "The list contains invalid data", 
-    "The print statement is missing parentheses"
+if x == 1:
+    print("x is 1")
+else:
+    print("x is neither 1 nor 2")
+''' : [
+    "Outside"
+    "Inside",
+    "Unclear",
+    "Not part of any block"
 ],
 
-'''What is the first step in fixing a Runtime Error?''': [
-    "Read the error output", 
-    "Check for syntax errors", 
-    "Re-run the program multiple times", 
-    "Use debugging tools"
+'''Is the line 'while x < 5:' inside or outside the 'if x == 1:' code block?
+
+if x == 1:
+    print("x is 1")
+while x < 5:
+    print(x)
+    x += 1
+''' : [
+    "Outside",
+    "Inside",
+    "Unclear",
+    "Not part of any block"
 ],
 
-'''In the given example, what specific error is reported when accessing an invalid index in the list?''': [
-    "IndexError", 
-    "TypeError", 
-    "KeyError", 
-    "FileNotFoundError"
+'''Is the line 'for i in range(3):' inside or outside the 'while x < 5:' code block?
+
+while x < 5:
+    print(x)
+    for i in range(3):
+        print(i)
+    x += 1
+''' : [
+    "Inside",
+    "Outside",
+    "Unclear",
+    "Not part of any block"
+],
+
+'''Is the line 'def greet(name):' inside or outside the 'for i in range(3):' code block?
+
+for i in range(3):
+    print(i)
+def greet(name):
+    print(f"Hello, {name}!")
+''' : [
+    "Outside",
+    "Inside",
+    "Unclear",
+    "Not part of any block"
+],
+
+'''Is the line 'class Dog:' inside or outside the 'def greet(name):' code block?
+
+def greet(name):
+    print(f"Hello, {name}!")
+class Dog:
+    def __init__(self, name):
+        self.name = name
+''' : [
+    "Outside",
+    "Inside",
+    "Unclear",
+    "Not part of any block"
+],
+
+'''Is the line '    def __init__(self, name):' inside or outside the 'class Dog:' code block?
+
+class Dog:
+    def __init__(self, name):
+        self.name = name
+''' : [
+    "Inside",
+    "Outside",
+    "Unclear",
+    "Not part of any block"
+],
+
+'''Is the line '    print("Hello, World!")' inside or outside the 'while x < 5:' code block?
+
+while x < 5:
+    print(x)
+    print("Hello, World!")
+    x += 1
+''' : [
+    "Inside",
+    "Outside",
+    "Unclear",
+    "Not part of any block"
+],
+
+'''Is the line '    print(i)' inside or outside the 'for i in range(3):' code block?
+
+for i in range(3):
+    print(i)
+print("Loop ended")
+''' : [
+    "Inside",
+    "Outside",
+    "Unclear",
+    "Not part of any block"
+],
+
+'''Is the line '    print(x)' inside or outside the 'else:' code block?
+
+if x == 1:
+    print("x is 1")
+else:
+    print(x)
+''' : [
+    "Inside",
+    "Outside",
+    "Unclear",
+    "Not part of any block"
+],
+
+'''Is the line '    print("Done")' inside or outside the 'while x < 5:' code block?
+
+while x < 5:
+    print(x)
+print("Done")
+''' : [
+    "Outside",
+    "Inside",
+    "Unclear",
+    "Not part of any block"
+],
+
+'''Is the line 'def greet(name):' inside or outside the 'class Dog:' code block?
+
+class Dog:
+    def __init__(self, name):
+        self.name = name
+def greet(name):
+    print(f"Hello, {name}!")
+''' : [
+    "Outside",
+    "Inside",
+    "Unclear",
+    "Not part of any block"
+],
+
+'''Is the line '    print(f"Hello, {name}!")' inside or outside the 'def greet(name):' code block?
+
+def greet(name):
+    print(f"Hello, {name}!")
+print("Function defined")
+''' : [
+    "Inside",
+    "Outside",
+    "Unclear",
+    "Not part of any block"
+],
+
+'''Is the line 'while x < 5:' inside or outside the 'if x == 1:' code block?
+
+if x == 1:
+    print("x is 1")
+while x < 5:
+    print(x)
+    x += 1
+''' : [
+    "Outside",
+    "Inside",
+    "Unclear",
+    "Not part of any block"
+],
+
+'''Is the line 'elif x == 2:' inside or outside the 'if x == 1:' code block?
+
+if x == 1:
+    print("x is 1")
+elif x == 2:
+    print("x is 2")
+''' : [
+    "Outside",
+    "Inside",
+    "Unclear",
+    "Not part of any block"
+],
+
+'''Is the line 'for i in range(5):' inside or outside the 'else:' code block?
+
+if x == 1:
+    print("x is 1")
+else:
+    for i in range(5):
+        print(i)
+''' : [
+    "Inside",
+    "Outside",
+    "Unclear",
+    "Not part of any block"
+],
+
+'''Is the line '    print(i)' inside or outside the 'for i in range(5):' code block?
+
+for i in range(5):
+    print(i)
+''' : [
+    "Inside",
+    "Outside",
+    "Unclear",
+    "Not part of any block"
+],
+
+'''Is the line 'def greet(name):' inside or outside the 'class Dog:' code block?
+
+class Dog:
+    def greet(self, name):
+        print(f"Hello, {name}!")
+def greet(name):
+    print(f"Goodbye, {name}!")
+''' : [
+    "Outside",
+    "Inside",
+    "Unclear",
+    "Not part of any block"
+],
+
+'''Is the line '    print(f"Hello, {name}!")' inside or outside the 'def greet(self, name):' code block?
+
+class Dog:
+    def greet(self, name):
+        print(f"Hello, {name}!")
+''' : [
+    "Inside",
+    "Outside",
+    "Unclear",
+    "Not part of any block"
 ]
 }
 
-'''Logical Errors'''
-s10 = {
-    '''What is a logical error in programming?''': [
-    "When code runs without syntax or runtime errors but doesn't produce the expected output", 
-    "When there is a syntax error", 
-    "When an exception occurs during code execution", 
-    "When a variable is not defined"
+s3 = {
+'''What is the preferred indentation style in Python according to PEP 8?
+''' : [
+    "4-space indentation",
+    "2-space indentation",
+    "Tab indentation",
+    "No indentation"
 ],
 
-'''What is the first step to fixing logical errors in your code?''': [
-    "Debugging", 
-    "Rewriting the entire code", 
-    "Using a new programming language", 
-    "Ignoring the error"
+'''What is the maximum line length recommended in PEP 8?
+''' : [
+    "79 characters",
+    "80 characters",
+    "100 characters",
+    "120 characters"
 ],
 
-'''What debugging method is commonly used by beginners to fix logical errors?''': [
-    "Using print() statements", 
-    "Using a debugger tool", 
-    "Rewriting code with different logic", 
-    "Reinstalling the IDE"
+'''How should functions and classes be separated according to PEP 8?
+''' : [
+    "Use blank lines",
+    "No blank lines",
+    "Use tabs",
+    "Indent functions and classes equally"
 ],
 
-'''What can be difficult about fixing logical errors compared to other types of errors?''': [
-    "The code runs without crashing, but the output is incorrect", 
-    "The code always crashes", 
-    "The syntax is incorrect", 
-    "The program doesn't start at all"
+'''Where should comments be placed in Python code according to PEP 8?
+''' : [
+    "On their own line",
+    "At the end of a line of code",
+    "Inside parentheses",
+    "Within the function signature"
 ],
 
-'''Why might a beginner choose print() debugging when trying to fix a logical error?''': [
-    "It is simple and doesn't require advanced tools", 
-    "It automatically fixes the logical error", 
-    "It helps to find syntax errors", 
-    "It is faster than rewriting the code"
+'''What should be used to document functions and classes according to PEP 8?
+''' : [
+    "Docstrings",
+    "Single-line comments",
+    "Inline comments",
+    "Type annotations"
+],
+
+'''Which of the following is the correct way to name functions in Python according to PEP 8?
+''' : [
+    "lower_snake_case",
+    "UpperCamelCase",
+    "camelCase",
+    "PascalCase"
+],
+
+'''Which of the following is the correct way to name classes in Python according to PEP 8?
+''' : [
+    "UpperCamelCase",
+    "lower_snake_case",
+    "camelCase",
+    "PascalCase"
+],
+
+'''What should be used around operators in Python according to PEP 8?
+''' : [
+    "Spaces around operators",
+    "No spaces around operators",
+    "Tabs around operators",
+    "Underscores around operators"
+],
+
+'''How should commas be spaced according to PEP 8?
+''' : [
+    "Space after commas",
+    "No space after commas",
+    "Tabs after commas",
+    "Underscores after commas"
+],
+
+'''What should be used inside bracketing constructs according to PEP 8?
+''' : [
+    "No spaces inside brackets",
+    "Spaces inside brackets",
+    "Tabs inside brackets",
+    "Underscores inside brackets"
+],
+
+'''What is the correct way to write method arguments according to PEP 8?
+''' : [
+    "Use self as the first argument in methods",
+    "Use 'this' as the first argument in methods",
+    "Use 'args' as the first argument in methods",
+    "Use 'self' for static methods"
+],
+'''How should the body of a function or class be indented according to PEP 8?
+''' : [
+    "4 spaces",
+    "2 spaces",
+    "1 tab",
+    "No indentation"
+],
+
+'''What is the recommended way to separate larger blocks of code inside functions according to PEP 8?
+''' : [
+    "Use blank lines",
+    "Use comments",
+    "Use tabs",
+    "No separation"
+],
+
+'''Which of the following is the correct way to use docstrings in Python according to PEP 8?
+''' : [
+    "Use triple quotes for docstrings",
+    "Use single quotes for docstrings",
+    "Use comments for docstrings",
+    "No docstrings"
+],
+'''The following code violates PEP 8. What is the issue?
+
+def MyFunction():
+    pass
+''' : [
+    "Function name should be in lower_snake_case",
+    "Function name should be in UpperCamelCase",
+    "Indentation is incorrect",
+    "Missing docstring"
+],
+
+'''The following code violates PEP 8. What is the issue?
+
+if x== 1:
+    print(x)
+''' : [
+    "Missing spaces around the operator",
+    "Too many spaces around the operator",
+    "Incorrect indentation",
+    "No blank line after 'if' statement"
+],
+
+'''The following code violates PEP 8. What is the issue?
+
+x=2+3
+''' : [
+    "Missing spaces around the operator",
+    "Too many spaces around the operator",
+    "Incorrect indentation",
+    "No need to use spaces"
+],
+
+'''The following code violates PEP 8. What is the issue?
+
+def exampleFunction():
+    pass # this is a comment
+''' : [
+    "Comment should be on a new line",
+    "Function name should be in lower_snake_case",
+    "Missing spaces after function name",
+    "Indentation is incorrect"
+],
+
+'''The following code violates PEP 8. What is the issue?
+
+a=1
+b = 2
+''' : [
+    "No spaces around the = operator",
+    "Inconsistent indentation around the assignment operator",
+    "Too many spaces around the assignment operator",
+    "Spacing is correct"
+],
+
+'''The following code violates PEP 8. What is the issue?
+
+def my_function(a,b):
+    return a + b
+''' : [
+    "No spaces after commas",
+    "Spaces should be around the operator",
+    "Function name should be UpperCamelCase",
+    "No docstring for the function"
+],
+
+'''The following code violates PEP 8. What is the issue?
+
+x = [1,2,3,4]
+''' : [
+    "No spaces after commas",
+    "Too many spaces after commas",
+    "Spaces should be inside brackets",
+    "Spacing is correct"
+],
+
+'''The following code violates PEP 8. What is the issue?
+
+class myclass:
+    pass
+''' : [
+    "Class name should be UpperCamelCase",
+    "Class name should be lower_snake_case",
+    "Class name should be PascalCase",
+    "Missing docstring"
+],
+
+'''The following code violates PEP 8. What is the issue?
+
+def my_function(  a , b ):
+    return a+b
+''' : [
+    "Spaces directly inside of bracketing constructs",
+    "Spaces should be removed after commas",
+    "Spacing is correct",
+    "No spaces around operators"
+],
+
+'''The following code violates PEP 8. What is the issue?
+
+def example(x,y):
+    return x + y
+''' : [
+    "No space after the comma",
+    "Extra spaces around the parentheses",
+    "Function name should be in UpperCamelCase",
+    "Missing docstring"
+],
+
+'''The following code violates PEP 8. What is the issue?
+
+def example_function():
+    pass
+print("Hello")
+''' : [
+    "No blank line between code blocks",
+    "Extra indentation for print statement",
+    "Missing docstring",
+    "The function body is not indented"
 ]
-
 }
+
+s4 = {
+'''Which of the following is a universal truth about programming?
+''' : [
+    "Syntax must be perfectly written",
+    "Syntax can be written loosely",
+    "Syntax is never important",
+    "Syntax doesn't matter"
+],
+
+'''What is the key takeaway from the universal programming truth about software?
+''' : [
+    "All software is broken",
+    "Software is always bug-free",
+    "Software should never be tested",
+    "Software is perfect at all times"
+],
+
+'''What happens if the syntax of a program is wrong?
+''' : [
+    "The program will not run",
+    "The program will run with warnings",
+    "The program will automatically fix the syntax",
+    "The program will ignore the error"
+]
+}
+
 
 
 
@@ -643,12 +692,12 @@ questions.update(s1)
 questions.update(s2)
 questions.update(s3)
 questions.update(s4)
-questions.update(s5)
-questions.update(s6)
-questions.update(s7)
-questions.update(s8)
-questions.update(s9)
-questions.update(s10)
+# questions.update(s5)
+# questions.update(s6)
+# questions.update(s7)
+# questions.update(s8)
+# questions.update(s9)
+# questions.update(s10)
 
 
 
@@ -657,7 +706,8 @@ questions.update(s10)
 
 
 if __name__ == "__main__":
+    print(len(questions))
 
-    for question, options in questions.items():
-        print(question, *options, sep="\n")
-        input()
+    # for question, options in questions.items():
+    #     print(question, *options, sep="\n")
+    #     input()

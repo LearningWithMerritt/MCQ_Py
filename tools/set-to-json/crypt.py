@@ -31,31 +31,21 @@ def enxor(file_in, file_out, key_file):
 
 
 
-root = Path(__file__).parent.parent / "tools" / "set-to-json"
+root = Path(__file__).parent
 q_sets = root / "ciphers"
 q_sets_plain = root / "json-files"
 
-for file in q_sets.iterdir():
-    if file.is_file():
-        file.unlink()
 
-# input("HIT ENTER TO CONTINUE")
-
-for file in q_sets_plain.iterdir():
-    if file.is_file():
-        name = file.parts[-1].replace(".json","")
-        enxor(file,q_sets/f"{name}",q_sets/f"{name}.key")
+def main():
+    for file in q_sets.iterdir():
+        if file.is_file():
+            file.unlink()
 
 
+    for file in q_sets_plain.iterdir():
+        if file.is_file():
+            name = file.parts[-1].replace(".json","")
+            enxor(file,q_sets/f"{name}",q_sets/f"{name}.key")
 
-    # try:
-    #     argument = sys.argv[1]
-    #     if(argument == "encrypt"):
-    #         enxor("q_set1.py", "q_set1.enc","q_set1")
-    #         delete("q_set1.py")
 
-    #     elif (argument == "decrypt"):
-    #         decrypt_file("q_set1.enc", "q_set1.py","q_set1")
 
-    # except IndexError as e:
-    #     print("MODE NOT SET")

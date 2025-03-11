@@ -3,6 +3,8 @@ import os
 from pathlib import Path 
 import time
 
+import crypt
+
 from questions import *
 
 path = Path(__file__).parent / "json-files" / f"{setname}.json"
@@ -45,3 +47,5 @@ if __name__ ==  "__main__":
     
     write(data)
     print(f"JSON file successfully created:\n{path}")
+
+    crypt.main()
