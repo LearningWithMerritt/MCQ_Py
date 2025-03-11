@@ -1,11 +1,13 @@
+
 import os
 import subprocess
 
 if os.name == "nt":
     lwm_path = os.path.join(os.environ["LOCALAPPDATA"], "LWM") 
+    #> python $env:USERPROFILE\Desktop\run-MCQ_Py.py
 elif os.name == "posix":
     lwm_path = os.path.join(os.environ["HOME"], "LWM") 
-
+    #$ python3 $HOME/Desktop/run-MCQ_Py.py
 
 repo_path = os.path.join(lwm_path, "MCQ_Py")
 
