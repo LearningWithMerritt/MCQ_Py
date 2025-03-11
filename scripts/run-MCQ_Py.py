@@ -2,7 +2,7 @@ import os
 import subprocess
 
 if os.name == "nt":
-    lwm_path = os.path.join(os.environ["USERPROFILE"], "LWM") 
+    lwm_path = os.path.join(os.environ["LOCALAPPDATA"], "LWM") 
 elif os.name == "posix":
     lwm_path = os.path.join(os.environ["HOME"], "LWM") 
 
