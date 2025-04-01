@@ -37,6 +37,9 @@ q_sets_plain = root / "json-files"
 
 
 def main():
+    if not os.path.exists(q_sets):
+        os.mkdir(q_sets)
+        
     for file in q_sets.iterdir():
         if file.is_file():
             file.unlink()

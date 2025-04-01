@@ -1,699 +1,680 @@
 '''Place preformmated questions and answers in the dictionary "questions" below.'''
 
-setname = "set12"
+setname = "set13"
 
 
 questions = {}
 
-'''General Syntax'''
+'''Data Type Literals'''
 s1 = {
-"Which of the following best defines 'syntax'?": [
-    "Rules for writing a language",
-    "A type of programming language",
-    "A debugging technique",
-    "A compiler feature"
-],
-"How is source code executed in Python?": [
-    "Top to bottom, left to right, line by line",
-    "Bottom to top, right to left",
-    "Randomly based on function calls",
-    "Only after compilation"
-],
-"What is required in Python syntax to define blocks of code?": [
-    "Indentation",
-    "Braces `{}`",
-    "Semicolons `;`",
-    "Parentheses `()`"
-],
-"What happens when indentation is incorrect in Python?": [
-    "It results in an error",
-    "It is ignored",
-    "It is automatically fixed",
-    "It only affects performance"
-],
-"Which symbol is primarily used for indentation in Python?": [
-    "Spaces or tabs",
-    "Semicolons `;`",
-    "Brackets `[]`",
-    "Curly braces `{}`"
-],
-"What type of error is caused by incorrect indentation in Python?": [
-    "IndentationError",
-    "SyntaxError",
-    "RuntimeError",
-    "LogicError"
-],
-'''Review the code snippet below, which print statement will be executed first?
-
-print("a"); print("b")
-print("c")
-
-print("d")
-''':[
-    "a",
-    "b",
-    "c",
-    "d"  
-]
-
-}
-
-'''Every Opening Needs a Closing'''
-
-s2 ={
-"Which of the following symbols in Python must always have a closing counterpart?": [
-    "(), [], {}",
-    "`@`, `#`, `!`",
-    "`?`, `:`",
-    "`%`, `&`"
-],
-"Which of the following is an example of correctly paired symbols in Python?": [
-    "'Hello' or (1, 2, 3)",
-    "'Hello or (1, 2, 3'",
-    "'[1, 2, 3'",
-    "'{key: value'"
-],
-"What will happen if an opening parenthesis `(` is not closed properly?": [
-    "SyntaxError",
-    "The code will run normally",
-    "Python will automatically close it",
-    "It will be ignored"
+"""Which of the following best describes 'Literal Data'?""": [
+    "Actual values that do not represent anything else",
+    "A variable that holds changing values",
+    "A function used to manipulate data",
+    "A type of programming loop"
 ],
 
-'''The following code snippet results in an error, which of the following correctly identifies the issue?
-
-print("Hello World"
-''': [
-    "A missing ')'",
-    "A missing '\"'",
-    "A missing '('",
-    "A missing '}'"
-],
-'''The following code snippet results in an error, which of the following correctly identifies the issue?
-
-numbers = [1, 2, 3, 4{
-''': [
-    "A missing ']'",
-    "A missing '['",
-    "A missing '{'",
-    "A missing '('"
-],
-'''The following code snippet results in an error, which of the following correctly identifies the issue?
-
-data = 'key': 'value' }
-''': [
-    "A missing '{'",
-    "A missing '}')",
-    "A missing '}'",
-    "A missing '['"
-],
-'''The following code snippet results in an error, which of the following correctly identifies the issue?
-
-if (x > 0: 
-    print('Positive')
-''': [
-    "A missing ')'",
-    "A missing ':')",
-    "A missing '('",
-    "A missing 'if'"
-],
-'''The following code snippet results in an error, which of the following correctly identifies the issue?
-
-def my_function(param: 
-    return param * 2
-''': [
-    "A missing ')'",
-    "A missing ':'",
-    "A missing '('",
-    "A missing 'def'"
-],
-'''The following code snippet results in an error, which of the following correctly identifies the issue?
-
-    if x == 10 :
-print("Ten")
-''': [
-    "IndentationError: unexpected indent",
-    "A missing ':'",
-    "A missing 'if'",
-    "IndentationError: expected an indented block"
-],
-'''The following code snippet results in an error, which of the following correctly identifies the issue?
-
-print("Hello World"
-''': [
-    "A missing ')'",
-    "A missing '('",
-    "A missing '{'",
-    "A missing '\"'"
-],
-'''The following code snippet results in an error, which of the following correctly identifies the issue?
-
-numbers = [1, 2, 3, 4)
-''': [
-    "Replace ')' with ']'",
-    "Replace '[' with '('",
-    "Replace ')' with '{'",
-    "Replace '(' with '['"
-],
-'''The following code snippet results in an error, which of the following correctly identifies the issue?
-
-def test_function():
-print('Testing')
-''': [
-    "IndentationError: expected an indented block",
-    "A missing ':'",
-    "A missing 'def'",
-    "A missing '()'"
-],
-'''The following code snippet results in an error, which of the following correctly identifies the issue?
-
-if (x > 0: 
-    print("Positive")
-''': [
-    "A missing ')'",
-    "A missing '('",
-    "A missing ':'",
-    "IndentationError: expected an indented block"
+"""Why is literal data important in programming?""": [
+    "It provides fixed values that can be used directly in code",
+    "It allows variables to change dynamically",
+    "It is required for defining functions",
+    "It helps debug errors in syntax"
 ]
 }
 
+
+'''Beginner Data Types'''
+s2={
+    """Which of the following best defines a boolean data type?""": [
+        "A data type that represents True or False values",
+        "A whole number without decimals",
+        "A sequence of characters",
+        "A collection of multiple items"
+    ],
+
+    """Which of the following is an example of an integer?""": [
+        "5",
+        "3.14",
+        "'a'",
+        '"Hello World"'
+    ],
+
+    """What is the key difference between an integer and a float?""": [
+        "A float can contain decimal values, while an integer cannot",
+        "An integer can contain decimal values, while a float cannot",
+        "Integers are used for text, while floats are used for numbers",
+        "Floats are whole numbers, while integers include decimals"
+    ],
+
+    """Which of the following is an example of a character data type?""": [
+        "'a'",
+        "5",
+        "True",
+        "[1, 2, 3]"
+    ],
+
+    """How is a string different from a character?""": [
+        "A string contains multiple characters, while a character is a single symbol",
+        "A string can only contain numbers, while a character is any symbol",
+        "A character is a special kind of integer",
+        "There is no difference between a string and a character"
+    ],
+
+    """Which of the following best describes a list in programming?""": [
+        "A collection of multiple items called elements",
+        "A single symbol stored in quotes",
+        "A number that contains a decimal point",
+        "A data type that only stores True or False"
+    ],
+
+    """How are indexes used in a list?""": [
+        "They help access individual elements in a list",
+        "They define the data type of the list",
+        "They determine the size of a list",
+        "They store decimal numbers in a list"
+    ],
+
+    """What is the first index of a list in most programming languages?""": [
+        "0",
+        "1",
+        "2",
+        "-1"
+    ],
+
+    """Which data type would be best for storing a name?""": [
+        "String",
+        "Integer",
+        "Boolean",
+        "Float"
+    ],
+
+    """Which of the following is NOT a beginner-friendly data type?""": [
+        "Dictionary",
+        "String",
+        "Integer",
+        "List"
+    ]
+}
+
+
+'Mutable vs. Immutable Data'
 s3 = {
-'''Is the line 'elif x == 2:' inside or outside the 'if x == 1:' code block?
+    """What is the key difference between mutable and immutable data types?""": [
+        "Mutable data can change, while immutable data cannot be changed",
+        "Immutable data can change, while mutable data cannot be changed",
+        "Mutable data is used for numbers, while immutable data is used for collections",
+        "There is no difference between mutable and immutable data types"
+    ],
 
-if x == 1:
-    print("x is 1")
-elif x == 2:
-    print("x is 2")
-''' : [
-    "Outside",
-    "Inside",
-    "Unclear",
-    "Not part of any block"
-],
+    """Which of the following is a mutable data type?""": [
+        "List",
+        "Integer",
+        "String",
+        "Tuple"
+    ],
 
-'''Is the line 'else:' inside or outside the 'if x == 1:' code block?
+    """Which of the following is an immutable data type?""": [
+        "Tuple",
+        "Dictionary",
+        "Set",
+        "List"
+    ],
 
-if x == 1:
-    print("x is 1")
-else:
-    print("x is neither 1 nor 2")
-''' : [
-    "Outside"
-    "Inside",
-    "Unclear",
-    "Not part of any block"
-],
+    """Why might you choose an immutable data type like a tuple instead of a list?""": [
+        "Tuples ensure that data cannot be accidentally modified",
+        "Tuples take up more memory than lists",
+        "Tuples allow you to change values easily",
+        "Tuples are the only way to store text data"
+    ],
 
-'''Is the line 'while x < 5:' inside or outside the 'if x == 1:' code block?
-
-if x == 1:
-    print("x is 1")
-while x < 5:
-    print(x)
-    x += 1
-''' : [
-    "Outside",
-    "Inside",
-    "Unclear",
-    "Not part of any block"
-],
-
-'''Is the line 'for i in range(3):' inside or outside the 'while x < 5:' code block?
-
-while x < 5:
-    print(x)
-    for i in range(3):
-        print(i)
-    x += 1
-''' : [
-    "Inside",
-    "Outside",
-    "Unclear",
-    "Not part of any block"
-],
-
-'''Is the line 'def greet(name):' inside or outside the 'for i in range(3):' code block?
-
-for i in range(3):
-    print(i)
-def greet(name):
-    print(f"Hello, {name}!")
-''' : [
-    "Outside",
-    "Inside",
-    "Unclear",
-    "Not part of any block"
-],
-
-'''Is the line 'class Dog:' inside or outside the 'def greet(name):' code block?
-
-def greet(name):
-    print(f"Hello, {name}!")
-class Dog:
-    def __init__(self, name):
-        self.name = name
-''' : [
-    "Outside",
-    "Inside",
-    "Unclear",
-    "Not part of any block"
-],
-
-'''Is the line '    def __init__(self, name):' inside or outside the 'class Dog:' code block?
-
-class Dog:
-    def __init__(self, name):
-        self.name = name
-''' : [
-    "Inside",
-    "Outside",
-    "Unclear",
-    "Not part of any block"
-],
-
-'''Is the line '    print("Hello, World!")' inside or outside the 'while x < 5:' code block?
-
-while x < 5:
-    print(x)
-    print("Hello, World!")
-    x += 1
-''' : [
-    "Inside",
-    "Outside",
-    "Unclear",
-    "Not part of any block"
-],
-
-'''Is the line '    print(i)' inside or outside the 'for i in range(3):' code block?
-
-for i in range(3):
-    print(i)
-print("Loop ended")
-''' : [
-    "Inside",
-    "Outside",
-    "Unclear",
-    "Not part of any block"
-],
-
-'''Is the line '    print(x)' inside or outside the 'else:' code block?
-
-if x == 1:
-    print("x is 1")
-else:
-    print(x)
-''' : [
-    "Inside",
-    "Outside",
-    "Unclear",
-    "Not part of any block"
-],
-
-'''Is the line '    print("Done")' inside or outside the 'while x < 5:' code block?
-
-while x < 5:
-    print(x)
-print("Done")
-''' : [
-    "Outside",
-    "Inside",
-    "Unclear",
-    "Not part of any block"
-],
-
-'''Is the line 'def greet(name):' inside or outside the 'class Dog:' code block?
-
-class Dog:
-    def __init__(self, name):
-        self.name = name
-def greet(name):
-    print(f"Hello, {name}!")
-''' : [
-    "Outside",
-    "Inside",
-    "Unclear",
-    "Not part of any block"
-],
-
-'''Is the line '    print(f"Hello, {name}!")' inside or outside the 'def greet(name):' code block?
-
-def greet(name):
-    print(f"Hello, {name}!")
-print("Function defined")
-''' : [
-    "Inside",
-    "Outside",
-    "Unclear",
-    "Not part of any block"
-],
-
-'''Is the line 'while x < 5:' inside or outside the 'if x == 1:' code block?
-
-if x == 1:
-    print("x is 1")
-while x < 5:
-    print(x)
-    x += 1
-''' : [
-    "Outside",
-    "Inside",
-    "Unclear",
-    "Not part of any block"
-],
-
-'''Is the line 'elif x == 2:' inside or outside the 'if x == 1:' code block?
-
-if x == 1:
-    print("x is 1")
-elif x == 2:
-    print("x is 2")
-''' : [
-    "Outside",
-    "Inside",
-    "Unclear",
-    "Not part of any block"
-],
-
-'''Is the line 'for i in range(5):' inside or outside the 'else:' code block?
-
-if x == 1:
-    print("x is 1")
-else:
-    for i in range(5):
-        print(i)
-''' : [
-    "Inside",
-    "Outside",
-    "Unclear",
-    "Not part of any block"
-],
-
-'''Is the line '    print(i)' inside or outside the 'for i in range(5):' code block?
-
-for i in range(5):
-    print(i)
-''' : [
-    "Inside",
-    "Outside",
-    "Unclear",
-    "Not part of any block"
-],
-
-'''Is the line 'def greet(name):' inside or outside the 'class Dog:' code block?
-
-class Dog:
-    def greet(self, name):
-        print(f"Hello, {name}!")
-def greet(name):
-    print(f"Goodbye, {name}!")
-''' : [
-    "Outside",
-    "Inside",
-    "Unclear",
-    "Not part of any block"
-],
-
-'''Is the line '    print(f"Hello, {name}!")' inside or outside the 'def greet(self, name):' code block?
-
-class Dog:
-    def greet(self, name):
-        print(f"Hello, {name}!")
-''' : [
-    "Inside",
-    "Outside",
-    "Unclear",
-    "Not part of any block"
-]
+    """What happens if you try to modify an immutable data type?""": [
+        "An error occurs because immutable data cannot be changed",
+        "The value updates without any issues",
+        "The data type automatically converts to mutable",
+        "It creates a reference to the original value instead of modifying it"
+    ]
 }
 
-s3 = {
-'''What is the preferred indentation style in Python according to PEP 8?
-''' : [
-    "4-space indentation",
-    "2-space indentation",
-    "Tab indentation",
-    "No indentation"
-],
-
-'''What is the maximum line length recommended in PEP 8?
-''' : [
-    "79 characters",
-    "80 characters",
-    "100 characters",
-    "120 characters"
-],
-
-'''How should functions and classes be separated according to PEP 8?
-''' : [
-    "Use blank lines",
-    "No blank lines",
-    "Use tabs",
-    "Indent functions and classes equally"
-],
-
-'''Where should comments be placed in Python code according to PEP 8?
-''' : [
-    "On their own line",
-    "At the end of a line of code",
-    "Inside parentheses",
-    "Within the function signature"
-],
-
-'''What should be used to document functions and classes according to PEP 8?
-''' : [
-    "Docstrings",
-    "Single-line comments",
-    "Inline comments",
-    "Type annotations"
-],
-
-'''Which of the following is the correct way to name functions in Python according to PEP 8?
-''' : [
-    "lower_snake_case",
-    "UpperCamelCase",
-    "camelCase",
-    "PascalCase"
-],
-
-'''Which of the following is the correct way to name classes in Python according to PEP 8?
-''' : [
-    "UpperCamelCase",
-    "lower_snake_case",
-    "camelCase",
-    "PascalCase"
-],
-
-'''What should be used around operators in Python according to PEP 8?
-''' : [
-    "Spaces around operators",
-    "No spaces around operators",
-    "Tabs around operators",
-    "Underscores around operators"
-],
-
-'''How should commas be spaced according to PEP 8?
-''' : [
-    "Space after commas",
-    "No space after commas",
-    "Tabs after commas",
-    "Underscores after commas"
-],
-
-'''What should be used inside bracketing constructs according to PEP 8?
-''' : [
-    "No spaces inside brackets",
-    "Spaces inside brackets",
-    "Tabs inside brackets",
-    "Underscores inside brackets"
-],
-
-'''What is the correct way to write method arguments according to PEP 8?
-''' : [
-    "Use self as the first argument in methods",
-    "Use 'this' as the first argument in methods",
-    "Use 'args' as the first argument in methods",
-    "Use 'self' for static methods"
-],
-'''How should the body of a function or class be indented according to PEP 8?
-''' : [
-    "4 spaces",
-    "2 spaces",
-    "1 tab",
-    "No indentation"
-],
-
-'''What is the recommended way to separate larger blocks of code inside functions according to PEP 8?
-''' : [
-    "Use blank lines",
-    "Use comments",
-    "Use tabs",
-    "No separation"
-],
-
-'''Which of the following is the correct way to use docstrings in Python according to PEP 8?
-''' : [
-    "Use triple quotes for docstrings",
-    "Use single quotes for docstrings",
-    "Use comments for docstrings",
-    "No docstrings"
-],
-'''The following code violates PEP 8. What is the issue?
-
-def MyFunction():
-    pass
-''' : [
-    "Function name should be in lower_snake_case",
-    "Function name should be in UpperCamelCase",
-    "Indentation is incorrect",
-    "Missing docstring"
-],
-
-'''The following code violates PEP 8. What is the issue?
-
-if x== 1:
-    print(x)
-''' : [
-    "Missing spaces around the operator",
-    "Too many spaces around the operator",
-    "Incorrect indentation",
-    "No blank line after 'if' statement"
-],
-
-'''The following code violates PEP 8. What is the issue?
-
-x=2+3
-''' : [
-    "Missing spaces around the operator",
-    "Too many spaces around the operator",
-    "Incorrect indentation",
-    "No need to use spaces"
-],
-
-'''The following code violates PEP 8. What is the issue?
-
-def exampleFunction():
-    pass # this is a comment
-''' : [
-    "Comment should be on a new line",
-    "Function name should be in lower_snake_case",
-    "Missing spaces after function name",
-    "Indentation is incorrect"
-],
-
-'''The following code violates PEP 8. What is the issue?
-
-a=1
-b = 2
-''' : [
-    "No spaces around the = operator",
-    "Inconsistent indentation around the assignment operator",
-    "Too many spaces around the assignment operator",
-    "Spacing is correct"
-],
-
-'''The following code violates PEP 8. What is the issue?
-
-def my_function(a,b):
-    return a + b
-''' : [
-    "No spaces after commas",
-    "Spaces should be around the operator",
-    "Function name should be UpperCamelCase",
-    "No docstring for the function"
-],
-
-'''The following code violates PEP 8. What is the issue?
-
-x = [1,2,3,4]
-''' : [
-    "No spaces after commas",
-    "Too many spaces after commas",
-    "Spaces should be inside brackets",
-    "Spacing is correct"
-],
-
-'''The following code violates PEP 8. What is the issue?
-
-class myclass:
-    pass
-''' : [
-    "Class name should be UpperCamelCase",
-    "Class name should be lower_snake_case",
-    "Class name should be PascalCase",
-    "Missing docstring"
-],
-
-'''The following code violates PEP 8. What is the issue?
-
-def my_function(  a , b ):
-    return a+b
-''' : [
-    "Spaces directly inside of bracketing constructs",
-    "Spaces should be removed after commas",
-    "Spacing is correct",
-    "No spaces around operators"
-],
-
-'''The following code violates PEP 8. What is the issue?
-
-def example(x,y):
-    return x + y
-''' : [
-    "No space after the comma",
-    "Extra spaces around the parentheses",
-    "Function name should be in UpperCamelCase",
-    "Missing docstring"
-],
-
-'''The following code violates PEP 8. What is the issue?
-
-def example_function():
-    pass
-print("Hello")
-''' : [
-    "No blank line between code blocks",
-    "Extra indentation for print statement",
-    "Missing docstring",
-    "The function body is not indented"
-]
-}
-
+'Determining Type of Data'
 s4 = {
-'''Which of the following is a universal truth about programming?
-''' : [
-    "Syntax must be perfectly written",
-    "Syntax can be written loosely",
-    "Syntax is never important",
-    "Syntax doesn't matter"
-],
+    """What does the type() function do in Python?""": [
+        "Returns the type of the data passed as an argument",
+        "Changes the type of the given data",
+        "Creates a new data type",
+        "Converts data into a string"
+    ],
 
-'''What is the key takeaway from the universal programming truth about software?
-''' : [
-    "All software is broken",
-    "Software is always bug-free",
-    "Software should never be tested",
-    "Software is perfect at all times"
-],
+    """Which of the following is the correct syntax for using the type() function?""": [
+        "type(data)",
+        "data.type()",
+        "typeof data",
+        "getType(data)"
+    ],
 
-'''What happens if the syntax of a program is wrong?
-''' : [
-    "The program will not run",
-    "The program will run with warnings",
-    "The program will automatically fix the syntax",
-    "The program will ignore the error"
-]
+    """What happens if you call type() without an argument?""": [
+        "An error occurs because type() requires an argument",
+        "It returns 'None'",
+        "It defaults to checking the type of the last variable used",
+        "It returns 'unknown'"
+    ],
+
+    """What will type(3.14) return in Python?""": [
+        "<class 'float'>",
+        "<class 'int'>",
+        "<class 'string'>",
+        "<class 'list'>"
+    ],
+
+    """Which of the following statements about type() is true?""": [
+        "It helps determine the type of a variable at runtime",
+        "It can be used to change a variable's data type",
+        "It only works with numeric data types",
+        "It returns a string representation of the type"
+    ],
+        """What will type(42) return in Python?""": [
+        "<class 'int'>",
+        "<class 'float'>",
+        "<class 'string'>",
+        "<class 'boolean'>"
+    ],
+
+    """What will type(True) return in Python?""": [
+        "<class 'bool'>",
+        "<class 'int'>",
+        "<class 'string'>",
+        "<class 'float'>"
+    ],
+
+    """What will type('Hello') return in Python?""": [
+        "<class 'str'>",
+        "<class 'char'>",
+        "<class 'list'>",
+        "<class 'tuple'>"
+    ],
+
+    """What will type(['a', 'b', 'c']) return in Python?""": [
+        "<class 'list'>",
+        "<class 'tuple'>",
+        "<class 'set'>",
+        "<class 'dict'>"
+    ],
+
+    """What will type(('x', 'y', 'z')) return in Python?""": [
+        "<class 'tuple'>",
+        "<class 'list'>",
+        "<class 'set'>",
+        "<class 'dict'>"
+    ],
+
+    """What will type({'name': 'Alice', 'age': 25}) return in Python?""": [
+        "<class 'dict'>",
+        "<class 'list'>",
+        "<class 'set'>",
+        "<class 'tuple'>"
+    ],
+}
+
+'Data Literals'
+s5 = {
+    """What is a data literal in programming?""": [
+        "A notation for representing a fixed actual value",
+        "A variable that can change over time",
+        "A function that modifies data",
+        "A reference to another value"
+    ],
+
+    """Which of the following best describes the purpose of a literal?""": [
+        "To directly represent a fixed value in code",
+        "To store changing values dynamically",
+        "To execute a function on a value",
+        "To create a reference to another variable"
+    ],
+
+    """Which of the following is an example of a literal?""": [
+        "3.14",
+        "x = 5",
+        "def add(a, b): return a + b",
+        "my_list = [1, 2, 3]"
+    ],
+        """What is the definition of a literal in programming?""": [
+        "A notation for representing a fixed actual value",
+        "A variable that can be reassigned",
+        "A function used to modify data",
+        "A reference to another value"
+    ],
+
+    """Which statement best defines a literal?""": [
+        "A direct representation of a fixed value in code",
+        "A name assigned to a changing value",
+        "A function that calculates values dynamically",
+        "A placeholder for user input"
+    ],
+
+    """How is a literal defined in programming?""": [
+        "A value written exactly as it is meant to be used",
+        "A symbolic name for a stored value",
+        "A function that operates on data",
+        "A reference to a memory location"
+    ],
+
+    """What does the term 'literal' mean in the context of programming?""": [
+        "A fixed value that does not represent something else",
+        "A variable that holds changing data",
+        "A type of function used in code",
+        "A reference to an object in memory"
+    ]
 }
 
 
+s6 = {
+    """What does the 'None' literal represent in Python?""": [
+        "A null value or the absence of a value",
+        "An empty string",
+        "A boolean value",
+        "A numeric value of zero"
+    ],
 
+    """Which of the following is the correct way to define a null value in Python?""": [
+        "None",
+        "null",
+        "undefined",
+        "nil"
+    ],
+
+    """What is the data type of None in Python?""": [
+        "<class 'NoneType'>",
+        "<class 'int'>",
+        "<class 'str'>",
+        "<class 'float'>"
+    ],
+        """What are the two possible values of a boolean literal in Python?""": [
+        "True and False",
+        "0 and 1",
+        "Yes and No",
+        "On and Off"
+    ],
+
+    """Which of the following represents a boolean literal in Python?""": [
+        "False",
+        '"True"',
+        "None",
+        "undefined"
+    ],
+
+    """What is the data type of the literal True in Python?""": [
+        "<class 'bool'>",
+        "<class 'int'>",
+        "<class 'str'>",
+        "<class 'NoneType'>"
+    ],
+    """What does an integer literal represent in Python?""": [
+        "A whole number with no fractional part",
+        "A number with decimals",
+        "A sequence of characters",
+        "A boolean value"
+    ],
+
+    """Which of the following is a valid integer literal in Python?""": [
+        "100",
+        "3.14",
+        "'Hello'",
+        "True"
+    ],
+
+    """How are large integer literals written to improve readability in Python?""": [
+        "By using underscores",
+        "By using commas",
+        "By writing them in scientific notation",
+        "By writing them as strings"
+    ],
+
+    """What will type(1_000_000) return in Python?""": [
+        "<class 'int'>",
+        "<class 'float'>",
+        "<class 'str'>",
+        "<class 'bool'>"
+    ],
+
+    """What is the result of using scientific notation like 1E9 in Python?""": [
+        "It returns a float value",
+        "It returns an integer value",
+        "It causes an error",
+        "It returns a string"
+    ],
+
+    """What is the value of 1E9 in Python?""": [
+        "1000000000.0",
+        "1000000000",
+        "1E9",
+        "None"
+    ],
+
+    """Which of the following is an invalid integer literal in Python?""": [
+        "3.14",
+        "1_000_000",
+        "1000",
+        "-200"
+    ],
+
+    """How does Python handle large integer literals with underscores like 1_000_000?""": [
+        "It removes the underscores but keeps the value the same",
+        "It throws an error",
+        "It treats it as a string",
+        "It rounds the number"
+    ],
+    """What is a float literal in Python?""": [
+        "A fractional number that includes a decimal point",
+        "A whole number with no decimal point",
+        "A sequence of characters",
+        "A boolean value"
+    ],
+
+    """Which of the following is a valid float literal in Python?""": [
+        "3.141592653589",
+        "1000",
+        "'Hello'",
+        "True"
+    ],
+
+    """What does the decimal point in a float literal represent?""": [
+        "It separates the whole number from the fractional part",
+        "It indicates the start of a string",
+        "It marks the start of a scientific notation",
+        "It is used to represent negative numbers"
+    ],
+
+    """True or False: A float literal must always contain a decimal point.""": [
+        "True",
+        "False"
+    ],
+
+    """What is the data type of 3.14159 in Python?""": [
+        "<class 'float'>",
+        "<class 'int'>",
+        "<class 'str'>",
+        "<class 'NoneType'>"
+    ],
+
+    """True or False: Float literals in Python can have fractional parts but no decimal point.""": [
+        "False",
+        "True"
+    ],
+
+    """What will type(-78.91) return in Python?""": [
+        "<class 'float'>",
+        "<class 'int'>",
+        "<class 'str'>",
+        "<class 'bool'>"
+    ],
+
+    """Which of the following is an example of a float literal in Python?""": [
+        "1.12",
+        "100",
+        "True",
+        "'Python'"
+    ], 
+
+    """Which of the following is a complex literal datatype?""": [
+        "3 + 2j",
+        "3 + 2",
+        "3.14",
+        "True"
+    ],
+        """What is a character literal in Python?""": [
+        "A single unit of text, such as a letter, digit, punctuation mark, symbol, or whitespace",
+        "A string of multiple characters",
+        "A boolean value",
+        "A floating-point number"
+    ],
+
+    """Which of the following is a valid character literal in Python?""": [
+        "'A'",
+        "'Hello'",
+        "'True'",
+        "['A', 'B', 'C']"
+    ],
+
+    """True or False: In Python, a character literal is treated as a single-length string. True or False?""": [
+        "True",
+        "False"
+    ],
+
+    """Which of the following represents a whitespace character literal in Python?""": [
+        "' '",
+        "'\n'",
+        "'\t'",
+        "'\\'"
+    ],
+
+    """Which of the following represents a valid escape sequence for a newline character in Python?""": [
+        "'\\n'",
+        "'\\t'",
+        "'\t'",
+        "'\\a'"
+    ],
+        """What is a string literal in Python?""": [
+        "A collection of characters",
+        "A single character",
+        "A sequence of numbers",
+        "A boolean value"
+    ],
+
+    """Which of the following is a valid string literal in Python?""": [
+        "\"Hello World!\"",
+        "5",
+        "True",
+        "'a'"
+    ],
+
+    """True or False: A string literal in Python can contain letters, numbers, and symbols. True or False?""": [
+        "True",
+        "False"
+    ],
+
+    """Which of the following is an example of a string literal in Python?""": [
+        "\"Python\"",
+        "3.14",
+        "'A'",
+        "3 + 4j"
+    ],
+
+    """True or False: A string literal in Python must be enclosed in quotes (single or double). True or False?""": [
+        "True",
+        "False"
+    ],
+    """What is a list literal in Python?""": [
+        "A collection of comma-separated elements enclosed in square brackets",
+        "A sequence of characters enclosed in double quotes",
+        "A collection of key-value pairs",
+        "A single element enclosed in curly braces"
+    ],
+
+    """Which of the following is a valid list literal in Python?""": [
+        "[1, 2, 3, 4]",
+        "{1, 2, 3, 4}",
+        "(1, 2, 3, 4)",
+        "'1, 2, 3, 4'"
+    ],
+
+    """True or False: Lists in Python are mutable, meaning their elements can be changed after creation. True or False?""": [
+        "True",
+        "False"
+    ],
+
+    """Which of the following is used to access the first element of a list?""": [
+        "Index 0",
+        "Index 1",
+        "The list length",
+        "None of the above"
+    ],
+
+    """True or False: Lists in Python allow duplicate elements. True or False?""": [
+        "True",
+        "False"
+    ],
+    """What index is used to access the second element of the list ['a', 'b', 'c']?""": [
+        "1",
+        "2",
+        "0",
+        "3"
+    ],
+    """What is a tuple literal in Python?""": [
+        "A collection of ordered, immutable elements enclosed in parentheses",
+        "A collection of ordered, mutable elements enclosed in square brackets",
+        "A collection of unordered elements enclosed in curly braces",
+        "A collection of characters enclosed in double quotes"
+    ],
+
+    """Which of the following is a valid tuple literal in Python?""": [
+        "('a', 'b', 'c')",
+        "[1, 2, 3]",
+        "{'a': 1, 'b': 2}",
+        "'a', 'b', 'c'"
+    ],
+
+    """True or False: Tuples in Python are immutable, meaning their elements cannot be changed after creation. True or False?""": [
+        "True",
+        "False"
+    ],
+
+    """Which of the following is used to access the second element of the tuple ('a', 'b', 'c')?""": [
+        "Index 1",
+        "Index 2",
+        "Index 0",
+        "Index 3"
+    ],
+
+    """True or False: Tuples in Python allow duplicate elements. True or False?""": [
+        "True",
+        "False"
+    ],
+    """What is a dictionary literal in Python?""": [
+        "A collection of key-value pairs enclosed in curly braces",
+        "A collection of ordered elements enclosed in square brackets",
+        "A sequence of elements enclosed in parentheses",
+        "A collection of key-value pairs enclosed in parentheses"
+    ],
+
+    """Which of the following is a valid dictionary literal in Python?""": [
+        "{'a': 1, 'b': 2, 'c': 3}",
+        "[1, 2, 3]",
+        "{'a', 'b', 'c'}",
+        "'a': 1, 'b': 2"
+    ],
+
+    """True or False: Dictionaries in Python allow duplicate keys. True or False?""": [
+        "False",
+        "True"
+    ],
+
+    """Which of the following is used to access the value associated with the key 'b' in the dictionary {'a': 1, 'b': 2, 'c': 3}?""": [
+        "dictionary['b']",
+        "dictionary[1]",
+        "dictionary('b')",
+        "dictionary.get('b')"
+    ],
+
+    """True or False: In a dictionary, the keys must be unique. True or False?""": [
+        "True",
+        "False"
+    ],
+
+    """What is a set literal in Python?""": [
+        "A collection of unordered, mutable elements enclosed in curly braces",
+        "A collection of ordered elements enclosed in square brackets",
+        "A sequence of elements enclosed in parentheses",
+        "A collection of key-value pairs enclosed in curly braces"
+    ],
+
+    """Which of the following is a valid set literal in Python?""": [
+        "{1, 2, 3}",
+        "[1, 2, 3]",
+        "('a', 'b', 'c')",
+        "{'a': 1, 'b': 2}"
+    ],
+
+    """True or False: Sets in Python allow duplicate elements. True or False?""": [
+        "False",
+        "True"
+    ],
+
+    """What will be the output of the following code: {1, 2, 3, 3}?""": [
+        "{1, 2, 3}",
+        "{1, 2, 3, 3}",
+        "Error",
+        "{3, 2, 1}"
+    ],
+
+    """True or False: In a set, the elements are ordered and can be accessed by an index. True or False?""": [
+        "False",
+        "True"
+    ],
+    """What is a data structure in computer science?""": [
+        "A specialized format for organizing, processing, retrieving, and storing data",
+        "A collection of elements",
+        "A method for accessing data",
+        "A type of programming language"
+    ],
+
+    """Which of the following best defines a collection?""": [
+        "A data structure that holds multiple elements",
+        "A single element in a list",
+        "A type of algorithm",
+        "A function that processes data"
+    ],
+
+    """What is a member in the context of a collection?""": [
+        "An item stored within a collection",
+        "A method for accessing elements",
+        "A specific index in a list",
+        "A synonym for a data type"
+    ],
+
+    """Which of the following is a synonym for a member in a collection?""": [
+        "Element",
+        "Index",
+        "Function",
+        "Key"
+    ],
+
+    """What does it mean if a collection is ordered?""": [
+        "It has a specific order, such as 0, 1, 2, ...",
+        "It allows changes to its elements",
+        "It stores elements randomly",
+        "It does not use indexes"
+    ],
+
+    """Which of the following best describes an indexed collection?""": [
+        "Elements are associated with a specific identifier (index), which can be used to directly locate and access the data",
+        "Elements are unordered and cannot be accessed directly",
+        "It contains only unique elements",
+        "It is immutable"
+    ],
+
+    """What does it mean if a collection is mutable?""": [
+        "Its elements can change",
+        "Its elements cannot be changed",
+        "It does not allow duplicate elements",
+        "It stores elements in a specific order"
+    ],
+
+    """What does it mean if a collection is immutable?""": [
+        "Its elements cannot change",
+        "Its elements can change",
+        "It has no specific order",
+        "It allows duplicate elements"
+    ]
+
+
+}
 
 # {question : [answer, *options]}
 questions.update(s1)
 questions.update(s2)
 questions.update(s3)
 questions.update(s4)
-# questions.update(s5)
-# questions.update(s6)
+questions.update(s5)
+questions.update(s6)
 # questions.update(s7)
 # questions.update(s8)
 # questions.update(s9)
