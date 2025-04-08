@@ -86,7 +86,7 @@ def load_quiz(section=None):
             log(f"QUIZ-NOT-FOUND({section.name}) : {e}")
             wait()
             return
-        Quiz(section.name,data,30).run()
+        Quiz(section.name,data,40).run()
     else:
         path = q_setpath / "test.json"
         qset = Save(path)
