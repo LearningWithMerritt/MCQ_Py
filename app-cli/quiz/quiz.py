@@ -92,6 +92,11 @@ class Quiz:
                 if question.check_answer(self.menu.output.text):
                     self.score += 1
 
+                try:
+                    self.save()
+                except KeyboardInterrupt:
+                    pass
+
                 wait(1)
                 self.number += 1
             
@@ -115,9 +120,9 @@ class Quiz:
 
     def end(self) -> None:
         try:
-            self.tf = time.time()
-            self.tdelta = self.lastdelta + self.tf - self.t0
-            self.calc_score()
+            # self.tf = time.time()
+            # self.tdelta = self.lastdelta + self.tf - self.t0
+            # self.calc_score()
             self.save()
             self.report()
         except KeyboardInterrupt as e:
@@ -132,7 +137,10 @@ class Quiz:
         self.percent = round(self.score /self.totalquestions * 100)
 
     def save(self) -> None:
-        
+        self.tf = time.time()
+        self.tdelta = self.lastdelta + self.tf - self.t0
+        self.calc_score()
+    
         if(not os.path.exists(self.savefile.noextension)):
             self.savefile.create()
             self.savefile.xor.enxor()
@@ -153,7 +161,8 @@ class Quiz:
         }
         self.savefile.write(data)
         print("[SAVE SUCCESSFUL]")
-        wait(1)
+
+
 
     def load(self) -> None:
 
