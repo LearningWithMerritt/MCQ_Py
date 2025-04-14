@@ -25,7 +25,10 @@ os.chdir(repo_path)
 
 subprocess.run(["git", "pull"])
 
-if os.name == "nt":
-    subprocess.run(["python", "app-cli/main.py"])
-elif os.name == "posix":
-    subprocess.run(["python3", "app-cli/main.py"])
+try:
+    if os.name == "nt":
+        subprocess.run(["python", "app-cli/main.py"])
+    elif os.name == "posix":
+        subprocess.run(["python3", "app-cli/main.py"])
+except KeyboardInterrupt as e:
+    pass
